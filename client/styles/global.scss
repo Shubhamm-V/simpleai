@@ -1,0 +1,40 @@
+@import "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto:wght@300&display=swap";
+
+:root {
+  --theme-color: #12141a;
+  --subtheme-color: #0e1525;
+  --primary-color: #37ffca;
+  --temp: #42b395;
+  --sub-primary-color: #f1f1f1;
+}
+*,
+::before,
+::after {
+  box-sizing: border-box;
+  font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  font-family: "Oxygen mono", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--subtheme-color) !important;
+}
+code {
+  font-family: var(--oxygenMono), source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
+}
+
+.container {
+  padding-inline: 8vw;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    padding-inline: 2rem !important;
+  }
+}
