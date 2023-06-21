@@ -2,9 +2,9 @@
 
 :root {
   --theme-color: #12141a;
-  --subtheme-color: #0e1525;
+  --subtheme-color: #252c3c;
   --primary-color: #37ffca;
-  --temp: #42b395;
+  --temp: #04946e;
   --sub-primary-color: #f1f1f1;
 }
 *,
@@ -14,6 +14,24 @@
   font-family: "Josefin Sans", sans-serif;
 }
 
+#tsparticles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  padding: 0;
+  margin: 0;
+  z-index: 0;
+}
+
+// #div-particle {
+//   position: absolute;
+//   // top: 0;
+//   // left: 0;
+//   z-index: 1;
+// }
+
 body {
   margin: 0;
   padding: 0;
@@ -22,11 +40,65 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--subtheme-color) !important;
+  background-color: var(--theme-color) !important;
 }
 code {
   font-family: var(--oxygenMono), source-code-pro, Menlo, Monaco, Consolas,
     "Courier New", monospace;
+}
+
+.ant-form-item .ant-form-item-label > label {
+  color: var(--sub-primary-color);
+}
+
+.ant-input {
+  color: var(--sub-primary-color);
+  border-color: var(--subtheme-color);
+  background-color: var(--subtheme-color);
+}
+
+.anticon svg {
+  color: var(--primary-color) !important;
+}
+
+.ant-input-affix-wrapper {
+  background-color: var(--subtheme-color);
+  border-color: var(--subtheme-color);
+}
+
+.ant-menu-submenu-title:hover {
+  .ant-menu-submenu-arrow::before,
+  .ant-menu-submenu-arrow::after {
+    background: var(--primary-color) !important;
+  }
+}
+
+.ant-menu > .ant-menu-title-content :hover {
+  color: var(--primary-color);
+}
+:where(.css-dev-only-do-not-override-22j71r).ant-menu-light.ant-menu-submenu
+  > .ant-menu {
+  color: var(--sub-primary-color);
+  background-color: var(--subtheme-color);
+}
+
+.ant-menu-submenu-title:hover:not(.ant-menu-selected):not(
+    .ant-submenu-selected
+  ) {
+  color: var(--primary-color) !important;
+}
+
+.ant-menu > .ant-menu-item:hover,
+.ant-menu > .ant-menu-item-active {
+  color: var(--primary-color) !important;
+}
+
+.ant-menu-light .ant-menu-item-selected {
+  background-color: var(--sub-theme-color) !important;
+}
+
+.ant-input::placeholder {
+  color: gray !important;
 }
 
 .container {
@@ -35,6 +107,6 @@ code {
 
 @media (max-width: 1200px) {
   .container {
-    padding-inline: 2rem !important;
+    padding-inline: 1rem !important;
   }
 }

@@ -1,6 +1,7 @@
+import Home from "@/components/home/Home";
 import React from "react";
-const index = () => {
-  return <h2 style={{ color: "white" }}>index</h2>;
+const index: React.FC = () => {
+  return <Home />;
 };
 
 export default index;

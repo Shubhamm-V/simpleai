@@ -1,0 +1,124 @@
+.menuTop {
+  width: 100vw;
+  position: absolute !important;
+  padding: 0.6rem 7vw 0.6rem 7vw;
+  background-color: transparent !important;
+}
+.stickMenu {
+  position: sticky !important;
+  z-index: 999 !important;
+  top: 0 !important;
+}
+.appLogo {
+  height: 2.1rem;
+  margin-top: 0.3rem;
+  width: auto;
+}
+.upperMenu {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+.menuWithItems {
+  display: flex !important;
+  gap: 0.5rem !important;
+  font-size: 1.1rem !important;
+  color: var(--sub-primary-color) !important;
+  background-color: transparent !important;
+}
+
+.menuButton {
+  display: none !important;
+}
+
+.buttonArea {
+  display: flex !important;
+  justify-content: flex-end !important;
+}
+
+.collapseButton {
+  display: none !important;
+}
+
+.closeIcon {
+  display: none;
+}
+.user {
+  color: var(--primary-color) !important;
+  font-size: 1rem !important;
+  margin-top: 0.8rem;
+}
+
+.logOut {
+  color: var(--primary-color) !important;
+  margin-top: 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+@media (max-width: 1200px) {
+  .menuTop {
+    padding: 0.5rem 2rem 0.5rem 2rem !important;
+  }
+}
+
+@media (max-width: 930px) {
+  .menuButtonIcon {
+    color: var(--sub-primary-color);
+    background-color: var(--theme-color);
+    margin-bottom: 0 !important;
+  }
+  .menuTop {
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 999 !important;
+  }
+  .upperMenu {
+    height: 100vh !important;
+    position: fixed !important;
+    left: 0 !important;
+    top: -0.5rem !important;
+    z-index: 999;
+    width: 70vw !important;
+    background-color: var(--subtheme-color) !important;
+    opacity: 0.7;
+  }
+  .menuWithItems {
+    flex-direction: column !important;
+    padding-top: 3rem !important;
+    overflow: scroll !important;
+    background-color: var(--subtheme-color);
+  }
+  .closeIcon {
+    z-index: 999;
+    display: inline !important;
+    font-size: 1.2rem !important;
+    padding: 1rem !important;
+    position: absolute !important;
+    top: 0.5rem !important;
+    color: var(--sub-primary-color);
+    background-color: transparent;
+  }
+  .showMenu,
+  .menuButton {
+    display: flex !important;
+  }
+  .hideMenu {
+    display: none !important;
+  }
+  .appLogo {
+    height: 1.7rem;
+    margin-top: 0.1rem;
+  }
+}
+
+@media (max-width: 450px) {
+  .upperMenu {
+    width: 85vw !important;
+  }
+  .menuTop {
+    padding: 1rem 0.5rem !important;
+  }
+  .appLogo {
+    height: 1.6 rem;
+    margin-top: 0.2rem;
+  }
+}
