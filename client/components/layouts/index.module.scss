@@ -40,7 +40,7 @@
 }
 
 .closeIcon {
-  display: none;
+  display: none !important;
 }
 .user {
   color: var(--primary-color) !important;
@@ -63,7 +63,7 @@
 @media (max-width: 930px) {
   .menuButtonIcon {
     color: var(--sub-primary-color);
-    background-color: var(--theme-color);
+    background-color: var(--theme-color) !important;
     margin-bottom: 0 !important;
   }
   .menuTop {

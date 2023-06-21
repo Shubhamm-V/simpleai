@@ -48,13 +48,13 @@ code {
 }
 
 .ant-form-item .ant-form-item-label > label {
-  color: var(--sub-primary-color);
+  color: var(--sub-primary-color) !important;
 }
 
 .ant-input {
-  color: var(--sub-primary-color);
-  border-color: var(--subtheme-color);
-  background-color: var(--subtheme-color);
+  color: var(--sub-primary-color) !important;
+  border-color: var(--subtheme-color) !important;
+  background-color: var(--subtheme-color) !important;
 }
 
 .anticon svg {
@@ -62,8 +62,8 @@ code {
 }
 
 .ant-input-affix-wrapper {
-  background-color: var(--subtheme-color);
-  border-color: var(--subtheme-color);
+  background-color: var(--subtheme-color) !important;
+  border-color: var(--subtheme-color) !important;
 }
 
 .ant-menu-submenu-title:hover {
