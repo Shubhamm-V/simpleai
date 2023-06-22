@@ -7,11 +7,28 @@
   --temp: #04946e;
   --sub-primary-color: #f1f1f1;
 }
+
 *,
 ::before,
 ::after {
   box-sizing: border-box;
   font-family: "Josefin Sans", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden !important;
+  font-family: "Oxygen mono", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--theme-color) !important;
+}
+
+code {
+  font-family: var(--oxygenMono), source-code-pro, Menlo, Monaco, Consolas,
+    "Courier New", monospace;
 }
 
 #tsparticles {
@@ -31,21 +48,6 @@
 //   // left: 0;
 //   z-index: 1;
 // }
-
-body {
-  margin: 0;
-  padding: 0;
-  overflow-x: hidden !important;
-  font-family: "Oxygen mono", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: var(--theme-color) !important;
-}
-code {
-  font-family: var(--oxygenMono), source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
-}
 
 .ant-form-item .ant-form-item-label > label {
   color: var(--sub-primary-color) !important;
@@ -74,12 +76,12 @@ code {
 }
 
 .ant-menu > .ant-menu-title-content :hover {
-  color: var(--primary-color);
+  color: var(--primary-color) !important;
 }
 :where(.css-dev-only-do-not-override-22j71r).ant-menu-light.ant-menu-submenu
   > .ant-menu {
-  color: var(--sub-primary-color);
-  background-color: var(--subtheme-color);
+  color: var(--sub-primary-color) !important;
+  background-color: var(--subtheme-color) !important;
 }
 
 .ant-menu-submenu-title:hover:not(.ant-menu-selected):not(
