@@ -1,7 +1,30 @@
-const express = require("express");
+const mongoose = require('mongoose');
+const dotenv = require('dotenv');
 
-const app = express();
+dotenv.config({ path: './config.env' });
+const expressAPP = require('./app');
 
-app.listen(5000, () => {
-  console.log("Server is listening");
+// Gettting database url and password form .env
+const DB =
+  process.env.DATABASE && process.env.DATABASE_PASSWORD
+    ? process.env.DATABASE.replace('<PASSWORD>', process.env.DATABASE_PASSWORD)
+    : undefined;
+
+// Connecting to database
+mongoose.connect(DB).then(() => {
+  console.log('Database connected');
+});
+
+// Listenig from port
+const server = expressAPP.listen(process.env.PORT, () => {
+  console.log(`Server is running on port ${process.env.PORT}`);
+});
+
+// Handling unhandledRejection
+process.on('unhandledRejection', (err: Error) => {
+  console.log('UNHANDLED REJECTION, SHUTTING DOWN');
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
+  });
 });

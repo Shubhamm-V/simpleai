@@ -1,4 +1,4 @@
-@import "https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto:wght@300&display=swap";
+@import 'https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&family=Roboto:wght@300&display=swap';
 
 :root {
   --theme-color: #12141a;
@@ -12,15 +12,15 @@
 ::before,
 ::after {
   box-sizing: border-box;
-  font-family: "Josefin Sans", sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden !important;
-  font-family: "Oxygen mono", "Segoe UI", "Roboto", "Oxygen", "Ubuntu",
-    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+  font-family: 'Oxygen mono', 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background-color: var(--theme-color) !important;
@@ -28,9 +28,10 @@ body {
 
 code {
   font-family: var(--oxygenMono), source-code-pro, Menlo, Monaco, Consolas,
-    "Courier New", monospace;
+    'Courier New', monospace;
 }
 
+// Particle Background CSS
 #tsparticles {
   position: absolute;
   top: 0;
@@ -49,60 +50,18 @@ code {
 //   z-index: 1;
 // }
 
-.ant-form-item .ant-form-item-label > label {
-  color: var(--sub-primary-color) !important;
+// Chrome authfill background color
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: var(--sub-primary-color);
+  transition: background-color 5000s ease-in-out 0s;
+  box-shadow: inset 0 0 20px 20px var(--subtheme-color);
 }
 
-.ant-input {
-  color: var(--sub-primary-color) !important;
-  border-color: var(--subtheme-color) !important;
-  background-color: var(--subtheme-color) !important;
-}
-
-.anticon svg {
-  color: var(--primary-color) !important;
-}
-
-.ant-input-affix-wrapper {
-  background-color: var(--subtheme-color) !important;
-  border-color: var(--subtheme-color) !important;
-}
-
-.ant-menu-submenu-title:hover {
-  .ant-menu-submenu-arrow::before,
-  .ant-menu-submenu-arrow::after {
-    background: var(--primary-color) !important;
-  }
-}
-
-.ant-menu > .ant-menu-title-content :hover {
-  color: var(--primary-color) !important;
-}
-:where(.css-dev-only-do-not-override-22j71r).ant-menu-light.ant-menu-submenu
-  > .ant-menu {
-  color: var(--sub-primary-color) !important;
-  background-color: var(--subtheme-color) !important;
-}
-
-.ant-menu-submenu-title:hover:not(.ant-menu-selected):not(
-    .ant-submenu-selected
-  ) {
-  color: var(--primary-color) !important;
-}
-
-.ant-menu > .ant-menu-item:hover,
-.ant-menu > .ant-menu-item-active {
-  color: var(--primary-color) !important;
-}
-
-.ant-menu-light .ant-menu-item-selected {
-  background-color: var(--sub-theme-color) !important;
-}
-
-.ant-input::placeholder {
-  color: gray !important;
-}
-
+// Container used in project
 .container {
   padding-inline: 8vw;
 }

@@ -1,7 +1,7 @@
-import React from "react";
-import classes from "./index.module.scss";
-import { Row, Col, Button } from "antd";
-import HomeBackground from "./HomeBackground";
+import React from 'react';
+import classes from './index.module.scss';
+import { Row, Col, Button } from 'antd';
+import HomeBackground from './HomeBackground';
 
 const Banner = () => {
   return (
@@ -15,14 +15,14 @@ const Banner = () => {
               Simplify&nbsp;
               <span className={classes.title}>
                 ARTIFICIAL INTELLIGENCE
-              </span>{" "}
+              </span>{' '}
               with SimpleAI
             </h1>
             <p className={classes.detail}>
               Access tools which improves your experience with AI and save your
               damn time
             </p>
-            <Row style={{ gap: "1rem", marginTop: "0.5rem" }}>
+            <Row style={{ gap: '1rem', marginTop: '0.5rem' }}>
               {/* <Col span={16} sm={16} xs={24}>
               <Input size="large" placeholder="Enter Your Email Address" />
             </Col> */}

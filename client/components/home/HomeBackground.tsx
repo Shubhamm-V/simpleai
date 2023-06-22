@@ -1,7 +1,7 @@
-import React, { useEffect, useState, useCallback } from "react";
-import type { Container, Engine } from "tsparticles-engine";
-import Particles from "react-particles";
-import { loadFull } from "tsparticles";
+import React, { useEffect, useState, useCallback } from 'react';
+import type { Container, Engine } from 'tsparticles-engine';
+import Particles from 'react-particles';
+import { loadFull } from 'tsparticles';
 
 const HomeBackground = () => {
   const [windowWidth, setWindowWidth] = useState(0);
@@ -12,8 +12,8 @@ const HomeBackground = () => {
       const newWidth = window.innerWidth;
       setWindowWidth(newWidth);
     };
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => window.removeEventListener("resize", updateWindowDimensions);
+    window.addEventListener('resize', updateWindowDimensions);
+    return () => window.removeEventListener('resize', updateWindowDimensions);
   }, []);
 
   const particlesInit = useCallback(async (engine: Engine) => {
@@ -29,7 +29,7 @@ const HomeBackground = () => {
 
   return (
     <div id="div-particle">
-      {" "}
+      {' '}
       <Particles
         id="tsparticles"
         init={particlesInit}
@@ -37,7 +37,7 @@ const HomeBackground = () => {
         options={{
           background: {
             color: {
-              value: "transparent",
+              value: 'transparent',
             },
           },
           fullScreen: false,
@@ -45,11 +45,11 @@ const HomeBackground = () => {
             events: {
               onClick: {
                 enable: true,
-                mode: "none",
+                mode: 'none',
               },
               onHover: {
                 enable: true,
-                mode: "repulse",
+                mode: 'repulse',
               },
               resize: true,
             },
@@ -65,17 +65,17 @@ const HomeBackground = () => {
           },
           particles: {
             color: {
-              value: ["#f1f1f1", "#52b395"],
+              value: ['#f1f1f1', '#52b395'],
             },
             number: {
-              value: windowWidth <= 930 ? 125 : 50,
+              value: windowWidth <= 930 ? 125 : 75,
               density: {
                 enable: true,
                 value_area: 1500,
               },
             },
             size: {
-              value: 2, // Initial particle size
+              value: 3, // Initial particle size
               random: true,
               anim: {
                 enable: true,
@@ -87,10 +87,10 @@ const HomeBackground = () => {
             move: {
               enable: true,
               speed: windowWidth <= 930 ? 2 : 1,
-              direction: "none", // Particles move in random directions
+              direction: 'none', // Particles move in random directions
               random: true,
               straight: false,
-              outMode: "out", // Particles disappear when they go out of the screen
+              outMode: 'out', // Particles disappear when they go out of the screen
               bounce: false,
               attract: {
                 enable: false,
