@@ -52,7 +52,7 @@ const limiter = rateLimit({
 });
 app.use('/api', limiter);
 
-app.use('/user', userRoute);
+app.use('/api/v1/users', userRoute);
 
 // Global Error Handling Middleware
 app.use(errorController);

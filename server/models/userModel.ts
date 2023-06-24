@@ -48,6 +48,18 @@ userSchema.pre('save', async function (this: any, next: NextFunction) {
   this.confirmPassword = undefined;
   next();
 });
+
+userSchema.pre('save', function (this: any, next: NextFunction) {
+  if (!this.isModified('password') || this.isNew) return next();
+  this.passwordChangeAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.methods.comparePassword = async (
+  enteredPassword: string,
+  savedPassword: string
+) => await bcrypt.compare(enteredPassword, savedPassword);
+
 const User = mongoose.model('User', userSchema);
 
 export default User;

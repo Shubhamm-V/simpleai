@@ -1,7 +1,7 @@
-import APPError from '../utils/AppError';
+import AppError from '../utils/AppError';
 import { NextFunction, Response, Request } from 'express';
 
-const sendErrorDev = (err: APPError, res: Response) => {
+const sendErrorDev = (err: AppError, res: Response) => {
   res.status(err.statusCode).json({
     err: err,
     message: err.message,
@@ -10,7 +10,7 @@ const sendErrorDev = (err: APPError, res: Response) => {
   });
 };
 
-const sendErrorProd = (err: APPError, res: Response) => {
+const sendErrorProd = (err: AppError, res: Response) => {
   if (err.isOperational) {
     res.status(err.statusCode).json({
       status: err.status,
@@ -25,7 +25,7 @@ const sendErrorProd = (err: APPError, res: Response) => {
 };
 
 const errorController = (
-  err: APPError,
+  err: AppError,
   req: Request,
   res: Response,
   next: NextFunction

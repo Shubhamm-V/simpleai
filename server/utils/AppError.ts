@@ -1,5 +1,5 @@
 // Used to Send error message if some error occurs
-class APPError extends Error {
+class AppError extends Error {
   statusCode: number;
   status: string;
   isOperational: boolean;
@@ -14,4 +14,4 @@ class APPError extends Error {
   }
 }
 
-export default APPError;
+export default AppError;
