@@ -1,6 +1,6 @@
-import React from "react";
-import Banner from "./Banner";
-import Layout from "../layouts/Layout";
+import React from 'react';
+import Banner from './Banner';
+import Layout from '../layouts/Layout';
 
 type Props = {};
 
@@ -9,7 +9,7 @@ const Home = (props: Props) => {
     <Layout>
       <div className="container">
         <Banner />
-        <div style={{ height: "80vh" }}></div>
+        <div style={{ height: '80vh' }}></div>
       </div>
     </Layout>
   );

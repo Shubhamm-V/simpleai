@@ -4,17 +4,17 @@ import Document, {
   Main,
   NextScript,
   DocumentContext,
-} from "next/document";
+} from 'next/document';
 
-import { doExtraStyle } from "../scripts/getAnddCss";
+import { doExtraStyle } from '../scripts/getAnddCss';
 
-import { StyleProvider, createCache } from "@ant-design/cssinjs";
+import { StyleProvider, createCache } from '@ant-design/cssinjs';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx: DocumentContext) {
     const cache = createCache();
 
-    let fileName = "";
+    let fileName = '';
 
     const originalRenderPage = ctx.renderPage;
 

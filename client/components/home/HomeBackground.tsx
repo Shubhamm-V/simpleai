@@ -6,6 +6,7 @@ import { loadFull } from 'tsparticles';
 const HomeBackground = () => {
   const [windowWidth, setWindowWidth] = useState(0);
 
+  // Getting window size as width of window increaased or decreased
   useEffect(() => {
     setWindowWidth(window.innerWidth);
     const updateWindowDimensions = () => {

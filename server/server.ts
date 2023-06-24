@@ -1,6 +1,13 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 
+// Handling unhandled Exception
+process.on('uncaughtException', (err: Error) => {
+  console.log('UNHANDLED EXCEPETION, SHUTTING DOWN');
+  console.log(err.name, err.message);
+  process.exit(1);
+});
+
 dotenv.config({ path: './config.env' });
 const expressAPP = require('./app');
 

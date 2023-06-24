@@ -5,9 +5,10 @@ const morgan = require('morgan');
 const express = require('express');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
+const userRoute = require('./routes/userRouter');
+const errorController = require('./controllers/errorController');
 
 const app = express();
-
 /* Security Measures */
 
 // To add security headers
@@ -50,5 +51,10 @@ const limiter = rateLimit({
   message: 'Too many requrest from this IP',
 });
 app.use('/api', limiter);
+
+app.use('/user', userRoute);
+
+// Global Error Handling Middleware
+app.use(errorController);
 
 module.exports = app;
