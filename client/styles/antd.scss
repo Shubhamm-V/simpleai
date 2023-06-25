@@ -3,6 +3,7 @@
 }
 
 .ant-input {
+  height: 2.2rem !important;
   color: var(--sub-primary-color) !important;
   border-color: var(--subtheme-color) !important;
   background-color: var(--subtheme-color) !important;
@@ -18,6 +19,8 @@
 
 .ant-input-affix-wrapper {
   background-color: var(--subtheme-color) !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
   border-color: var(--subtheme-color) !important;
 }
 
@@ -51,4 +54,13 @@
 
 .ant-menu-light .ant-menu-item-selected {
   background-color: var(--sub-theme-color) !important;
+}
+
+.ant-notification .ant-notification-notice {
+  background-color: var(--subtheme-color) !important;
+  color: var(--sub-primary-color) !important;
+}
+
+.ant-notification-notice-message {
+  color: var(--sub-primary-color) !important;
 }

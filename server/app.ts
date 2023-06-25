@@ -7,6 +7,7 @@ const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const userRoute = require('./routes/userRouter');
 const errorController = require('./controllers/errorController');
+const cors = require('./utils/accessCors');
 
 const app = express();
 /* Security Measures */
@@ -51,6 +52,8 @@ const limiter = rateLimit({
   message: 'Too many requrest from this IP',
 });
 app.use('/api', limiter);
+
+app.use(cors);
 
 app.use('/api/v1/users', userRoute);
 

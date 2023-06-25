@@ -31,6 +31,24 @@ code {
     'Courier New', monospace;
 }
 
+.link {
+  color: var(--primary-color);
+  padding-inline: 0.5rem;
+  cursor: pointer;
+}
+
+.link:hover {
+  color: #24ba92;
+}
+
+.w-100 {
+  width: 100% !important;
+}
+
+.h-100 {
+  height: 100% !important;
+}
+
 // Particle Background CSS
 #tsparticles {
   position: absolute;

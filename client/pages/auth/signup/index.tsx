@@ -1,23 +1,50 @@
-import React from "react";
-import classes from "./index.module.scss";
-import { Col, Row, Form, Input, Button, Divider } from "antd";
-import { FacebookOutlined, GoogleOutlined } from "@ant-design/icons";
+import React, { useState } from 'react';
+import classes from './index.module.scss';
+import { Col, Row, Form, Input, Button, Divider } from 'antd';
+import { FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
+import openNotification from '@/components/utils/Notification';
+import axios from 'axios';
+import { useRouter } from 'next/router';
+import Link from 'next/link';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
-  const onFinish = (values: any) => {
-    console.log("Success:", values);
+  const router = useRouter();
+  const [form] = Form.useForm();
+  const [isLoading, setIsLoading] = useState(false);
+
+  // Sign UP
+  const onFinish = async (values: any) => {
+    console.log('Success:', values);
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/api/v1/users/signup',
+        values
+      );
+      setIsLoading(false);
+      form.resetFields();
+      openNotification({ type: 'success', message: 'Signup Successful' });
+      router.push('/dashboard');
+      console.log('Response:', response);
+    } catch (error) {
+      openNotification({ type: 'error', message: 'Something went wrong' });
+      setIsLoading(false);
+    }
   };
 
   const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    console.log('Failed:', errorInfo);
   };
+
   return (
     <Row>
-      <Col xs={24} md={14} lg={14} className={classes.signupContainer}>
+      <Col xs={24} md={13} lg={13} className={classes.signupContainer}>
         <Form
-          name="basic"
+          name="signup-form"
+          form={form}
           layout="vertical"
+          onFinish={onFinish}
           onFinishFailed={onFinishFailed}
           className={classes.signupForm}
         >
@@ -27,7 +54,7 @@ const SignupForm: React.FC = (props: Props) => {
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: "Pleaae enter username" }]}
+            rules={[{ required: true, message: 'Pleaae enter username' }]}
           >
             <Input placeholder="Full Name" />
           </Form.Item>
@@ -35,7 +62,7 @@ const SignupForm: React.FC = (props: Props) => {
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: "Pleaae enter email" }]}
+            rules={[{ required: true, message: 'Pleaae enter email' }]}
           >
             <Input placeholder="Email" />
           </Form.Item>
@@ -43,7 +70,7 @@ const SignupForm: React.FC = (props: Props) => {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: "Please enter password!" }]}
+            rules={[{ required: true, message: 'Please enter password!' }]}
           >
             <Input.Password placeholder="Password" />
           </Form.Item>
@@ -54,7 +81,7 @@ const SignupForm: React.FC = (props: Props) => {
             rules={[
               {
                 required: true,
-                message: "Please enter confirm password password!",
+                message: 'Please enter confirm password password!',
               },
             ]}
           >
@@ -62,7 +89,12 @@ const SignupForm: React.FC = (props: Props) => {
           </Form.Item>
 
           <Form.Item>
-            <Button type="primary" htmlType="submit" style={{ width: "100%" }}>
+            <Button
+              type="primary"
+              htmlType="submit"
+              style={{ width: '100%' }}
+              loading={isLoading}
+            >
               Signup
             </Button>
           </Form.Item>
@@ -78,9 +110,9 @@ const SignupForm: React.FC = (props: Props) => {
                 Google
               </Button>
             </Col>
-            <Col span={12} style={{ textAlign: "right" }}>
+            <Col span={12} style={{ textAlign: 'right' }}>
               <Button type="primary" className={classes.loginWithButtons}>
-                {" "}
+                {' '}
                 <i>
                   <FacebookOutlined />
                 </i>
@@ -91,13 +123,15 @@ const SignupForm: React.FC = (props: Props) => {
         </div>
         <div className={classes.signInSection}>
           <p>
-            Already Have a Account?{" "}
-            <span className={classes.signInLink}>Sign In</span>
+            Already Have a Account?
+            <Link href="/auth/login">
+              <span className="link">Sign In</span>
+            </Link>
           </p>
         </div>
       </Col>
 
-      <Col span={10}>
+      <Col span={11} style={{ maxHeight: '100vh' }}>
         <img
           src="/images/auth-images/sign-up.png"
           className={classes.signupImage}

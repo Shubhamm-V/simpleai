@@ -1,5 +1,5 @@
 import { NextFunction } from 'express';
-
+import crypto from 'crypto';
 const mongoose = require('mongoose');
 const validator = require('validator');
 const bcrypt = require('bcryptjs');
@@ -59,6 +59,16 @@ userSchema.methods.comparePassword = async (
   enteredPassword: string,
   savedPassword: string
 ) => await bcrypt.compare(enteredPassword, savedPassword);
+
+userSchema.methods.createPasswordResetToken = function (this: any) {
+  const resetToken = crypto.randomBytes(32).toString('hex');
+  this.passwordResetToken = crypto
+    .createHash('sha256')
+    .update(resetToken)
+    .digest('hex');
+  this.passwordResetExpires = Date.now() + 10 * 60 * 1000;
+  return resetToken;
+};
 
 const User = mongoose.model('User', userSchema);
 

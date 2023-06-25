@@ -13,6 +13,7 @@
 .signupImage {
   height: 100%;
   width: 100%;
+  object-fit: cover;
 }
 
 .signupDivider {
@@ -48,11 +49,6 @@
     border-color: #05d79f !important;
     background-color: transparent !important;
   }
-}
-
-.signInLink {
-  cursor: pointer;
-  color: var(--primary-color);
 }
 
 .signupHeader {

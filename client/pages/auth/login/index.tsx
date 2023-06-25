@@ -1,9 +1,134 @@
-import React from "react";
+import React, { useState } from 'react';
+import { Col, Row, Form, Input, Button, Divider } from 'antd';
+import {
+  LockOutlined,
+  UserOutlined,
+  GoogleOutlined,
+  FacebookOutlined,
+} from '@ant-design/icons';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import axios from 'axios';
+import classes from './index.module.scss';
+import openNotification from '@/components/utils/Notification';
 
 type Props = {};
 
-const index = (props: Props) => {
-  return <div>index</div>;
+const Login = (props: Props) => {
+  const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
+  const [form] = Form.useForm();
+
+  const onFinish = async (values: any) => {
+    setIsLoading(true);
+    try {
+      const response = await axios.post(
+        'http://localhost:8000/api/v1/users/login',
+        values
+      );
+      form.resetFields();
+      openNotification({ type: 'success', message: 'Login Successful' });
+      router.push('/dashboard');
+      console.log('Response:', response);
+    } catch (error) {
+      openNotification({ type: 'error', message: 'Something went wrong' });
+      setIsLoading(false);
+    }
+  };
+  return (
+    <Row>
+      <Col md={12}>
+        <img
+          className={classes.loginImage}
+          src="/images/auth-images/login-image.webp"
+        />
+      </Col>
+      <Col xs={24} md={12} lg={12} className={classes.formContainer}>
+        <div></div>
+        <Form
+          form={form}
+          name="login"
+          layout="vertical"
+          onFinish={onFinish}
+          className={classes.loginForm}
+          // initialValues={{ remember: true }}
+        >
+          <h1 className={classes.loginHeader}>
+            Login with <span>SimpleAI</span>
+          </h1>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[{ required: true, message: 'Please enter your Username!' }]}
+          >
+            <Input
+              prefix={<UserOutlined className="site-form-item-icon" />}
+              placeholder="Email"
+            />
+          </Form.Item>
+          <Form.Item
+            label="Password"
+            name="password"
+            rules={[{ required: true, message: 'Please enter your Password!' }]}
+          >
+            <Input
+              prefix={<LockOutlined className="site-form-item-icon" />}
+              type="password"
+              placeholder="Password"
+            />
+          </Form.Item>
+
+          <Form.Item>
+            <Button
+              type="primary"
+              htmlType="submit"
+              className="w-100"
+              loading={isLoading}
+            >
+              Log In
+            </Button>
+          </Form.Item>
+          <a
+            href=""
+            className={`link ${classes.forgotLink}`}
+            style={{ textAlign: 'right' }}
+          >
+            Forgot password?
+          </a>
+        </Form>
+        <div className={classes.loginForm}>
+          <Divider className={classes.loginDivider}>OR</Divider>
+          <Row className={classes.loginWithContainer}>
+            <Col span={12}>
+              <Button type="primary" className={classes.loginWithButtons}>
+                <i>
+                  <GoogleOutlined />
+                </i>
+                Google
+              </Button>
+            </Col>
+            <Col span={12} style={{ textAlign: 'right' }}>
+              <Button type="primary" className={classes.loginWithButtons}>
+                {' '}
+                <i>
+                  <FacebookOutlined />
+                </i>
+                Facebook
+              </Button>
+            </Col>
+          </Row>
+        </div>
+        <div className={classes.signInSection}>
+          <p>
+            Don't Have an Account?
+            <Link href="/auth/signup">
+              <span className="link">Sign Up</span>
+            </Link>
+          </p>
+        </div>
+      </Col>
+    </Row>
+  );
 };
 
-export default index;
+export default Login;

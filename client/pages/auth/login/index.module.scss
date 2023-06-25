@@ -1,0 +1,86 @@
+.loginImage {
+  height: 100vh;
+  width: 100%;
+  object-fit: cover;
+}
+.formContainer {
+  display: flex !important;
+  justify-content: center !important;
+  gap: 1rem !important;
+  flex-direction: column !important;
+  align-items: center !important;
+}
+.loginForm {
+  width: 53% !important;
+}
+.forgotLink {
+  display: flex;
+  justify-content: flex-end;
+  font-size: 1rem;
+  padding-inline: 0.8rem;
+}
+
+.loginWithContainer {
+  display: flex !important;
+  justify-content: space-between !important;
+  .loginWithButtons {
+    color: #05b586;
+    background-color: var(--theme-color);
+    border: 1px solid #05b586;
+    width: 97%;
+    i {
+      padding-inline: 0.4rem;
+      svg {
+        color: #05b586 !important;
+      }
+    }
+  }
+  .loginWithButtons:hover {
+    color: #05d79f !important;
+    border-color: #05d79f !important;
+    background-color: transparent !important;
+  }
+}
+
+.loginDivider {
+  margin-top: 0 !important;
+  font-size: 0.6rem !important;
+  margin-bottom: 1.2rem !important;
+  color: var(--sub-primary-color) !important;
+  border-color: var(--sub-primary-color) !important;
+}
+
+.loginHeader {
+  text-align: center;
+  color: var(--sub-primary-color);
+  span {
+    color: var(--primary-color) !important;
+  }
+}
+
+.signInSection {
+  color: var(--sub-primary-color);
+  padding: 0.6rem;
+}
+
+@media (max-width: 900px) {
+  .loginForm {
+    width: 70% !important;
+  }
+}
+@media (max-width: 768px) {
+  .loginImage {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .loginForm {
+    width: 90% !important;
+  }
+
+  .loginContainer {
+    height: 100%;
+    padding: 1rem 0;
+  }
+}
