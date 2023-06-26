@@ -30,18 +30,25 @@ const createAndSendToken = (user: any, statusCode: number, res: Response) => {
 };
 
 // User SignUP
+
 export const signup = createAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const newUser = await User.create({
-      name: req.body.name,
-      email: req.body.email,
-      password: req.body.password,
-      confirmPassword: req.body.confirmPassword,
-      passwordChangeAt: req.body.passwordChangeAt,
-      role: req.body.role,
-    });
+    let user = {};
+    if (req.body.loginType === 'google') {
+      // strore userinfo in DB after google login
+      user = await User.findOne({ email: req.body.email });
 
-    createAndSendToken(newUser, 201, res);
+      // if user login with google first time
+      if (!user) {
+        const newUser = new User(req.body);
+        const savedUser = await newUser.save({ validateBeforeSave: false });
+        createAndSendToken(savedUser, 201, res); // reusing it because above user's scope within the block
+      }
+    } else {
+      user = await User.create(req.body);
+    }
+    createAndSendToken(user, 201, res);
+    console.log('Userrr : ', user);
   }
 );
 

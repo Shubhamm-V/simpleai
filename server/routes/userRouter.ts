@@ -1,5 +1,5 @@
 import express from 'express';
-import { addUser } from '../controllers/userController';
+import { addUser, getUser } from '../controllers/userController';
 import {
   forgotPassword,
   login,
@@ -9,6 +9,7 @@ import {
 const router = express.Router();
 
 router.route('/').post(addUser);
+router.route('/:email').get(getUser);
 
 router.route('/signup').post(signup);
 router.route('/login').post(login);

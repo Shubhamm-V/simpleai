@@ -16,7 +16,8 @@ const userSchema = new mongoose.Schema({
     required: [true, 'Please enter the email'],
     validate: [validator.isEmail, 'Please email valid email'],
   },
-  photo: [String],
+  profileImage: [String],
+  googleProfileImage: String,
   role: {
     type: String,
     enum: ['user', 'admin'],
@@ -37,6 +38,11 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
+  loginType: {
+    type: String,
+    enum: ['email', 'google'],
+    default: 'email',
+  },
   passwordChangeAt: Date,
   passwordResetToken: String,
   passwordResetExpires: String,
@@ -52,6 +58,12 @@ userSchema.pre('save', async function (this: any, next: NextFunction) {
 userSchema.pre('save', function (this: any, next: NextFunction) {
   if (!this.isModified('password') || this.isNew) return next();
   this.passwordChangeAt = Date.now() - 1000;
+  next();
+});
+
+userSchema.pre('save', function (this: any, next: NextFunction) {
+  if (this.loginType !== 'google') return next();
+  this.constructor.validateBeforeSave = false;
   next();
 });
 
