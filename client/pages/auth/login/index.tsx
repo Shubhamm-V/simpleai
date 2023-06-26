@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
+import { loginWithGogle } from '../google-login';
 import {
   LockOutlined,
   UserOutlined,
@@ -16,8 +18,9 @@ type Props = {};
 
 const Login = (props: Props) => {
   const router = useRouter();
-  const [isLoading, setIsLoading] = useState(false);
   const [form] = Form.useForm();
+  const { data: session } = useSession();
+  const [isLoading, setIsLoading] = useState(false);
 
   const onFinish = async (values: any) => {
     setIsLoading(true);
@@ -34,6 +37,18 @@ const Login = (props: Props) => {
       openNotification({ type: 'error', message: 'Something went wrong' });
       setIsLoading(false);
     }
+  };
+  useEffect(() => {
+    if (session) {
+      loginWithGogle(session).then((res) => {
+        console.log('RESPONSE ==========>  ', res);
+        router.push('/dashboard');
+      });
+    }
+  }, [session]);
+
+  const handleGoogleLogin = async () => {
+    await signIn('google');
   };
   return (
     <Row>
@@ -100,7 +115,11 @@ const Login = (props: Props) => {
           <Divider className={classes.loginDivider}>OR</Divider>
           <Row className={classes.loginWithContainer}>
             <Col span={12}>
-              <Button type="primary" className={classes.loginWithButtons}>
+              <Button
+                type="primary"
+                className={classes.loginWithButtons}
+                onClick={handleGoogleLogin}
+              >
                 <i>
                   <GoogleOutlined />
                 </i>

@@ -3,6 +3,7 @@ import { ConfigProvider } from 'antd';
 import { AppProps } from 'next/app';
 import '../styles/global.scss';
 import '../styles/antd.scss';
+import { SessionProvider } from 'next-auth/react';
 
 const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
   return (
@@ -13,7 +14,9 @@ const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
         },
       }}
     >
-      <Component {...pageProps} />
+      <SessionProvider session={pageProps.session}>
+        <Component {...pageProps} />
+      </SessionProvider>
     </ConfigProvider>
   );
 };

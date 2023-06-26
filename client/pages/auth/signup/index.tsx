@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import classes from './index.module.scss';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
 import { FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
-import openNotification from '@/components/utils/Notification';
+import { signIn, signOut, useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
+import { loginWithGogle } from '../google-login';
+import openNotification from '@/components/utils/Notification';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
   const router = useRouter();
   const [form] = Form.useForm();
+  const { data: session } = useSession();
   const [isLoading, setIsLoading] = useState(false);
 
   // Sign UP
@@ -35,6 +38,19 @@ const SignupForm: React.FC = (props: Props) => {
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo);
+  };
+
+  useEffect(() => {
+    if (session) {
+      loginWithGogle(session).then((res) => {
+        console.log('RESPONSE ==========>  ', res);
+        router.push('/dashboard');
+      });
+    }
+  }, [session]);
+
+  const handleGoogleLogin = async () => {
+    await signIn('google');
   };
 
   return (
@@ -103,7 +119,11 @@ const SignupForm: React.FC = (props: Props) => {
           <Divider className={classes.signupDivider}>OR</Divider>
           <Row className={classes.loginWithContainer}>
             <Col span={12}>
-              <Button type="primary" className={classes.loginWithButtons}>
+              <Button
+                type="primary"
+                className={classes.loginWithButtons}
+                onClick={handleGoogleLogin}
+              >
                 <i>
                   <GoogleOutlined />
                 </i>
