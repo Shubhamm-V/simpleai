@@ -1,3 +1,4 @@
+// This file is for waiting until document is fully rendered on screen
 import Document, {
   Html,
   Head,

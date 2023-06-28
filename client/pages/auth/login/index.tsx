@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
 import { loginWithGogle } from '../google-login';
 import {
@@ -13,6 +13,7 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
+import { loginWithFacebook } from '../facebook-login';
 
 type Props = {};
 
@@ -38,18 +39,31 @@ const Login = (props: Props) => {
       setIsLoading(false);
     }
   };
+
   useEffect(() => {
     if (session) {
-      loginWithGogle(session).then((res) => {
-        console.log('RESPONSE ==========>  ', res);
-        router.push('/dashboard');
-      });
+      const provider = sessionStorage.getItem('provider');
+      if (provider === 'google') {
+        loginWithGogle(session).then((res) => {
+          if (res) router.push('/dashboard');
+        });
+      } else if (provider === 'facebook') {
+        loginWithFacebook(session).then((res) => {
+          if (res) router.push('/dashboard');
+        });
+      }
     }
   }, [session]);
 
   const handleGoogleLogin = async () => {
+    sessionStorage.setItem('provider', 'google');
     await signIn('google');
   };
+  const handleFacebookLogin = async () => {
+    sessionStorage.setItem('provider', 'facebook');
+    await signIn('facebook');
+  };
+
   return (
     <Row>
       <Col md={12}>
@@ -127,7 +141,11 @@ const Login = (props: Props) => {
               </Button>
             </Col>
             <Col span={12} style={{ textAlign: 'right' }}>
-              <Button type="primary" className={classes.loginWithButtons}>
+              <Button
+                type="primary"
+                className={classes.loginWithButtons}
+                onClick={handleFacebookLogin}
+              >
                 {' '}
                 <i>
                   <FacebookOutlined />

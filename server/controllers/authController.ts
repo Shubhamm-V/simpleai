@@ -44,6 +44,13 @@ export const signup = createAsync(
         const savedUser = await newUser.save({ validateBeforeSave: false });
         createAndSendToken(savedUser, 201, res); // reusing it because above user's scope within the block
       }
+    } else if (req.body.loginType === 'facebook') {
+      user = await User.findOne({ email: req.body.email });
+      if (!user) {
+        const newUser = new User(req.body);
+        const savedUser = await newUser.save({ validateBeforeSave: false });
+        createAndSendToken(savedUser, 201, res); // reusing it because above user's scope within the block
+      }
     } else {
       user = await User.create(req.body);
     }

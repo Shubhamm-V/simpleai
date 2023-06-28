@@ -47,7 +47,7 @@ const Banner = () => {
             </Row>
           </Col>
           <Col span={11} sm={11} xs={24} className={classes.bannerImage}>
-            <img src="ai-image-1.gif" alt="banner" />
+            <img src="images/ai-images/ai-image-1.gif" alt="banner" />
           </Col>
         </Row>
       </div>

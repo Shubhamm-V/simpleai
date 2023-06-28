@@ -8,6 +8,7 @@ import { useRouter } from 'next/router';
 import Link from 'next/link';
 import { loginWithGogle } from '../google-login';
 import openNotification from '@/components/utils/Notification';
+import { loginWithFacebook } from '../facebook-login';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
@@ -42,15 +43,26 @@ const SignupForm: React.FC = (props: Props) => {
 
   useEffect(() => {
     if (session) {
-      loginWithGogle(session).then((res) => {
-        console.log('RESPONSE ==========>  ', res);
-        router.push('/dashboard');
-      });
+      const provider = sessionStorage.getItem('provider');
+      if (provider === 'google') {
+        loginWithGogle(session).then((res) => {
+          if (res) router.push('/dashboard');
+        });
+      } else if (provider === 'facebook') {
+        loginWithFacebook(session).then((res) => {
+          if (res) router.push('/dashboard');
+        });
+      }
     }
   }, [session]);
 
   const handleGoogleLogin = async () => {
+    sessionStorage.setItem('provider', 'google');
     await signIn('google');
+  };
+  const handleFacebookLogin = async () => {
+    sessionStorage.setItem('provider', 'facebook');
+    await signIn('facebook');
   };
 
   return (
@@ -131,7 +143,11 @@ const SignupForm: React.FC = (props: Props) => {
               </Button>
             </Col>
             <Col span={12} style={{ textAlign: 'right' }}>
-              <Button type="primary" className={classes.loginWithButtons}>
+              <Button
+                type="primary"
+                className={classes.loginWithButtons}
+                onClick={handleFacebookLogin}
+              >
                 {' '}
                 <i>
                   <FacebookOutlined />
