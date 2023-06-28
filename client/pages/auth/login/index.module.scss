@@ -16,7 +16,7 @@
 .forgotLink {
   display: flex;
   justify-content: flex-end;
-  font-size: 1rem;
+  font-size: 0.9rem;
   padding-inline: 0.8rem;
 }
 
@@ -64,6 +64,9 @@
 }
 
 @media (max-width: 900px) {
+  .formContainer {
+    height: 100vh !important;
+  }
   .loginForm {
     width: 70% !important;
   }
@@ -78,7 +81,9 @@
   .loginForm {
     width: 90% !important;
   }
-
+  .forgotLink {
+    font-size: 0.8rem;
+  }
   .loginContainer {
     height: 100%;
     padding: 1rem 0;
