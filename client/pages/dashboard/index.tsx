@@ -1,9 +1,12 @@
 import React from 'react';
-
-type Props = {};
-
-const index = (props: Props) => {
-  return <div style={{ color: 'white' }}>index</div>;
+import DashLayout from '@/components/layouts/dashboard/DashLayout';
+import Dashboard from './Dashboard';
+const index = () => {
+  return (
+    <DashLayout>
+      <Dashboard />
+    </DashLayout>
+  );
 };
 
 export default index;

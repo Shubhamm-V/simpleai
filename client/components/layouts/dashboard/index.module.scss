@@ -1,0 +1,51 @@
+.logoContainer {
+  display: flex;
+  font-size: 1.4rem;
+  padding-left: 0.5rem;
+  justify-content: space-between;
+  color: var(--sub-primary-color);
+}
+
+.header {
+  padding-left: 0.5rem !important;
+  padding-right: 1rem !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  color: var(--sub-primary-color) !important;
+  background-color: var(--theme-color) !important;
+}
+.menu {
+  background-color: var(--theme-color) !important;
+  font-size: 1rem !important;
+}
+
+.sidebar {
+  position: relative !important;
+  height: 100vh !important;
+  z-index: 999 !important;
+  background-color: var(--theme-color) !important;
+}
+.content {
+  color: var(--sub-primary-color) !important;
+  background-color: var(--subtheme-color) !important;
+}
+.toggle {
+  background-color: transparent !important;
+}
+
+.close {
+  display: none !important;
+}
+
+@media (max-width: 576px) {
+  .close {
+    padding: 1rem;
+    font-size: 1.2rem;
+    display: flex !important;
+  }
+  .sidebar {
+    position: fixed !important;
+    width: 80vw !important;
+  }
+}

@@ -49,7 +49,7 @@
 
 .ant-menu > .ant-menu-item:hover,
 .ant-menu > .ant-menu-item-active {
-  color: var(--primary-color) !important;
+  color: var(--sub-primary-color) !important;
 }
 
 .ant-menu-light .ant-menu-item-selected {
@@ -59,6 +59,11 @@
 .ant-notification .ant-notification-notice {
   background-color: var(--subtheme-color) !important;
   color: var(--sub-primary-color) !important;
+}
+.my-custom-icon-class svg {
+  color: var(
+    --primary-color
+  ) !important; /* Change the color to your desired value */
 }
 
 .ant-notification-notice-message {

@@ -1,14 +1,14 @@
-import React, { useEffect, useState } from "react";
-import { Button, Col, Menu, Row } from "antd";
-import classes from "./index.module.scss";
-import { MenuOutlined, CloseOutlined } from "@ant-design/icons";
-import { MENU_ITEMS } from "@/constants/menu";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import { Button, Col, Menu, Row } from 'antd';
+import classes from './index.module.scss';
+import { MenuOutlined, CloseOutlined } from '@ant-design/icons';
+import { MENU_ITEMS } from '@/constants/menu';
+import Link from 'next/link';
 
 type Props = {};
 
 const MenuTop = (props: Props) => {
-  const [current, setCurrent] = useState("mail");
+  const [current, setCurrent] = useState('mail');
   const [windowWidth, setWindowWidth] = useState(1300);
   const [toggleMenu, setToggleMenu] = useState(false);
 
@@ -18,13 +18,13 @@ const MenuTop = (props: Props) => {
       const newWidth = window.innerWidth;
       setWindowWidth(newWidth);
     };
-    window.addEventListener("resize", updateWindowDimensions);
-    return () => window.removeEventListener("resize", updateWindowDimensions);
+    window.addEventListener('resize', updateWindowDimensions);
+    return () => window.removeEventListener('resize', updateWindowDimensions);
   }, []);
 
   // action to be performed after clicking menu
   const onClick = (e: { key: string }) => {
-    console.log("click ", e);
+    console.log('click ', e);
     setCurrent(e.key);
   };
 
@@ -72,7 +72,7 @@ const MenuTop = (props: Props) => {
             sm={15}
             xs={windowWidth > 320 ? 12 : 11}
           >
-            <h2 style={{ color: "#fff" }}>SimpleAI</h2>
+            <h2 style={{ color: '#fff' }}>SimpleAI</h2>
             {/* <img src="applogo.png" alt="app logo" className={classes.appLogo} /> */}
           </Col>
           <Col
@@ -91,7 +91,7 @@ const MenuTop = (props: Props) => {
               className={classes.menuWithItems}
               onClick={onClick}
               selectedKeys={[current]}
-              mode={windowWidth <= 930 ? "inline" : "horizontal"}
+              mode={windowWidth <= 930 ? 'inline' : 'horizontal'}
               items={MENU_ITEMS}
             />
           </Col>
@@ -104,7 +104,7 @@ const MenuTop = (props: Props) => {
           >
             <Link href="/auth/signup">
               <Button
-                size={windowWidth <= 930 ? "middle" : "large"}
+                size={windowWidth <= 930 ? 'middle' : 'large'}
                 className={classes.exploreButton}
                 type="primary"
               >
