@@ -55,7 +55,7 @@ export const signup = createAsync(
       user = await User.create(req.body);
     }
     createAndSendToken(user, 201, res);
-    console.log('Userrr : ', user);
+    // console.log('Userrr : ', user);
   }
 );
 

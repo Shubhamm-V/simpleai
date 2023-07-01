@@ -2,6 +2,7 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Layout, Menu, Avatar, Button } from 'antd';
 import { SIDE_MENU_ITEMS } from '@/constants/menu';
 import classes from './index.module.scss';
+import { useSelector } from 'react-redux';
 import {
   MenuUnfoldOutlined,
   MenuFoldOutlined,
@@ -17,12 +18,20 @@ type Props = {
 const Sidebar = (props: Props) => {
   const [collapsed, setCollapsed] = useState(false);
   const [windowWidth, setWindowWidth] = useState(1300);
-
+  const [screenLoad, setScreenLoad] = useState(false);
+  const userInfo = useSelector((state: any) => state.userReducer.user);
+  const user = userInfo.data.user;
   useEffect(() => {
     const updateWindowDimensions = () => {
       const newWidth = window.innerWidth;
+      if (newWidth <= 576) toggleSidebar();
+
       setWindowWidth(newWidth);
     };
+    if (!screenLoad) {
+      updateWindowDimensions();
+      setScreenLoad(true);
+    }
     window.addEventListener('resize', updateWindowDimensions);
     return () => window.removeEventListener('resize', updateWindowDimensions);
   }, []);
@@ -36,7 +45,7 @@ const Sidebar = (props: Props) => {
       <Sider
         trigger={null}
         collapsible
-        width={windowWidth <= 576 ? '80%' : '16rem'}
+        width={windowWidth <= 576 ? '85vw' : '17vw'}
         collapsed={collapsed}
         collapsedWidth={0}
         className={classes.sidebar}
@@ -89,8 +98,12 @@ const Sidebar = (props: Props) => {
           )}
           <div className="profile">
             {/* Profile section content */}
-            <Avatar size="small" icon={<UserOutlined />} />
-            <span style={{ marginLeft: 8 }}>John Doe</span>
+            <Avatar
+              size="small"
+              src={user.googleProfileImage || user.facebookProfileImage}
+              icon={<UserOutlined />}
+            />
+            <span style={{ marginLeft: 8 }}>{user.name}</span>
           </div>
         </Header>
         <Content className={classes.content}>{props.content}</Content>
