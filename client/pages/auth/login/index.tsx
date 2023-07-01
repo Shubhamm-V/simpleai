@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
-import { loginWithGogle } from '../google-login';
+import { loginWithGogle } from '@/pages/api/auth/google-login';
 import {
   LockOutlined,
   UserOutlined,
@@ -14,7 +14,7 @@ import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
-import { loginWithFacebook } from '../facebook-login';
+import { loginWithFacebook } from '@/pages/api/auth/facebook-login';
 import { loginActions } from '@/redux/reducers/userReducer';
 
 type Props = {};
