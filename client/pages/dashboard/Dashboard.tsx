@@ -1,9 +1,12 @@
 import React from 'react';
-
+import { useSelector } from 'react-redux';
 type Props = {};
 
 const Dashboard = (props: Props) => {
-  return <div>Dashboard</div>;
+  const userInfo = useSelector((state: any) => state.userReducer.user);
+  const user = userInfo.data.user;
+  console.log('User: ', user);
+  return <div>{user.name}</div>;
 };
 
 export default Dashboard;

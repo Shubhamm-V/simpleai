@@ -9,12 +9,15 @@ import Link from 'next/link';
 import { loginWithGogle } from '../google-login';
 import openNotification from '@/components/utils/Notification';
 import { loginWithFacebook } from '../facebook-login';
+import { useDispatch } from 'react-redux';
+import { loginActions } from '@/redux/reducers/userReducer';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
   const router = useRouter();
   const [form] = Form.useForm();
   const { data: session } = useSession();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   // Sign UP
@@ -28,6 +31,7 @@ const SignupForm: React.FC = (props: Props) => {
       );
       setIsLoading(false);
       form.resetFields();
+      dispatch(loginActions.loginUser({ user: response.data }));
       openNotification({ type: 'success', message: 'Signup Successful' });
       router.push('/dashboard');
       console.log('Response:', response);
@@ -46,11 +50,17 @@ const SignupForm: React.FC = (props: Props) => {
       const provider = sessionStorage.getItem('provider');
       if (provider === 'google') {
         loginWithGogle(session).then((res) => {
-          if (res) router.push('/dashboard');
+          if (res) {
+            dispatch(loginActions.loginUser({ user: res.data }));
+            router.push('/dashboard');
+          }
         });
       } else if (provider === 'facebook') {
         loginWithFacebook(session).then((res) => {
-          if (res) router.push('/dashboard');
+          if (res) {
+            dispatch(loginActions.loginUser({ user: res.data }));
+            router.push('/dashboard');
+          }
         });
       }
     }

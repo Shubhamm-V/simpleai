@@ -10,10 +10,12 @@ import {
 } from '@ant-design/icons';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
 import { loginWithFacebook } from '../facebook-login';
+import { loginActions } from '@/redux/reducers/userReducer';
 
 type Props = {};
 
@@ -21,6 +23,7 @@ const Login = (props: Props) => {
   const router = useRouter();
   const [form] = Form.useForm();
   const { data: session } = useSession();
+  const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
 
   const onFinish = async (values: any) => {
@@ -30,6 +33,8 @@ const Login = (props: Props) => {
         'http://localhost:8000/api/v1/users/login',
         values
       );
+      dispatch(loginActions.loginUser({ user: response.data }));
+
       form.resetFields();
       openNotification({ type: 'success', message: 'Login Successful' });
       router.push('/dashboard');
@@ -45,11 +50,17 @@ const Login = (props: Props) => {
       const provider = sessionStorage.getItem('provider');
       if (provider === 'google') {
         loginWithGogle(session).then((res) => {
-          if (res) router.push('/dashboard');
+          if (res) {
+            dispatch(loginActions.loginUser({ user: res.data }));
+            router.push('/dashboard');
+          }
         });
       } else if (provider === 'facebook') {
         loginWithFacebook(session).then((res) => {
-          if (res) router.push('/dashboard');
+          if (res) {
+            dispatch(loginActions.loginUser({ user: res.data }));
+            router.push('/dashboard');
+          }
         });
       }
     }
