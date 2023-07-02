@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "alias": "my-alias",
+  "name": "admin-portal",
+  "builds": [
+    {
+      "src": "next.config.js",
+      "use": "@now/next"
+    }
+  ],
+  "routes": [{ "src": "/(.*)", "dest": "/pages/$1" }],
+  "build": {
+    "env": {
+      "NPM_TOKEN": "@npm_token",
+      "API_URL": "@api_url",
+      "IS_NOW": "true"
+    }
+  }
+}
