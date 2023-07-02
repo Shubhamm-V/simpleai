@@ -19,4 +19,5 @@ export default NextAuth({
       clientSecret: facebookClientSecret,
     }),
   ],
+  secret: process.env.SECRET,
 });
