@@ -14,12 +14,15 @@ const antdTheme = {
   },
 };
 
-const MyApp: React.FC<AppProps> = ({ Component, pageProps }) => {
+const MyApp: React.FC<AppProps> = ({
+  Component,
+  pageProps: { session, ...pageProps },
+}) => {
   return (
     <ConfigProvider theme={antdTheme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <SessionProvider session={pageProps.session}>
+          <SessionProvider session={...pageProps}>
             <Component {...pageProps} />
           </SessionProvider>
         </PersistGate>
