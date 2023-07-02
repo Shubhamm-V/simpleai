@@ -144,7 +144,10 @@ const SignupForm: React.FC = (props: Props) => {
               <Button
                 type="primary"
                 className={classes.loginWithButtons}
-                onClick={handleGoogleLogin}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleGoogleLogin();
+                }}
               >
                 <i>
                   <GoogleOutlined />
@@ -156,7 +159,10 @@ const SignupForm: React.FC = (props: Props) => {
               <Button
                 type="primary"
                 className={classes.loginWithButtons}
-                onClick={handleFacebookLogin}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleFacebookLogin();
+                }}
               >
                 {' '}
                 <i>

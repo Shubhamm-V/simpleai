@@ -143,7 +143,10 @@ const Login = (props: Props) => {
               <Button
                 type="primary"
                 className={classes.loginWithButtons}
-                onClick={handleGoogleLogin}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleGoogleLogin();
+                }}
               >
                 <i>
                   <GoogleOutlined />
@@ -155,7 +158,10 @@ const Login = (props: Props) => {
               <Button
                 type="primary"
                 className={classes.loginWithButtons}
-                onClick={handleFacebookLogin}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleFacebookLogin();
+                }}
               >
                 {' '}
                 <i>
