@@ -5,7 +5,7 @@ module.exports = (req: Request, res: Response, next: NextFunction) => {
   } else {
     res.setHeader(
       'Access-Control-Allow-Origin',
-      'https://simple-ai.netlify.app'
+      'https://simplleai.netlify.app'
     );
   }
   res.setHeader(
