@@ -6,11 +6,11 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
-import { loginWithGogle } from '@/pages/api/auth/google-login';
 import openNotification from '@/components/utils/Notification';
-import { loginWithFacebook } from '@/pages/api/auth/facebook-login';
+import { loginWithGoogleFB } from '@/pages/api/auth/google-facebook-login';
 import { useDispatch } from 'react-redux';
 import { loginActions } from '@/redux/reducers/userReducer';
+import URL from '@/constants/url';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
@@ -25,10 +25,7 @@ const SignupForm: React.FC = (props: Props) => {
     console.log('Success:', values);
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        'http://localhost:8000/api/v1/users/signup',
-        values
-      );
+      const response = await axios.post(`${URL}/api/v1/users/signup`, values);
       setIsLoading(false);
       form.resetFields();
       dispatch(loginActions.loginUser({ user: response.data }));
@@ -49,14 +46,14 @@ const SignupForm: React.FC = (props: Props) => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
       if (provider === 'google') {
-        loginWithGogle(session).then((res) => {
+        loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
           }
         });
       } else if (provider === 'facebook') {
-        loginWithFacebook(session).then((res) => {
+        loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');

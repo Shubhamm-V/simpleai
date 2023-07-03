@@ -100,7 +100,7 @@ const Sidebar = (props: Props) => {
             {/* Profile section content */}
             <Avatar
               size="small"
-              src={user.googleProfileImage || user.facebookProfileImage}
+              src={user.profileImage}
               icon={<UserOutlined />}
             />
             <span style={{ marginLeft: 8 }}>{user.name}</span>

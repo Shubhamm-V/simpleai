@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { signIn, useSession } from 'next-auth/react';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
-import { loginWithGogle } from '@/pages/api/auth/google-login';
+import { loginWithGoogleFB } from '@/pages/api/auth/google-facebook-login';
 import {
   LockOutlined,
   UserOutlined,
@@ -12,9 +12,9 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import axios from 'axios';
+import URL from '@/constants/url';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
-import { loginWithFacebook } from '@/pages/api/auth/facebook-login';
 import { loginActions } from '@/redux/reducers/userReducer';
 
 type Props = {};
@@ -29,10 +29,7 @@ const Login = (props: Props) => {
   const onFinish = async (values: any) => {
     setIsLoading(true);
     try {
-      const response = await axios.post(
-        'http://localhost:8000/api/v1/users/login',
-        values
-      );
+      const response = await axios.post(`${URL}/api/v1/users/login`, values);
       dispatch(loginActions.loginUser({ user: response.data }));
 
       form.resetFields();
@@ -49,14 +46,14 @@ const Login = (props: Props) => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
       if (provider === 'google') {
-        loginWithGogle(session).then((res) => {
+        loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
           }
         });
       } else if (provider === 'facebook') {
-        loginWithFacebook(session).then((res) => {
+        loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');

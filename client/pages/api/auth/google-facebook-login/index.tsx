@@ -1,12 +1,13 @@
 import axios from 'axios';
 import openNotification from '@/components/utils/Notification';
-export const loginWithFacebook = async (session: any) => {
+
+export const loginWithGoogleFB = async (session: any, loginType: string) => {
   try {
     const res = await axios.post('http://localhost:8000/api/v1/users/signup', {
       name: session.user?.name,
       email: session.user?.email,
-      facebookProfileImage: session.user?.image,
-      loginType: 'facebook',
+      profileImage: session.user?.image,
+      loginType,
     });
     openNotification({ type: 'success', message: 'Login successful' });
     return res;

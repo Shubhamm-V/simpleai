@@ -17,8 +17,6 @@ const userSchema = new mongoose.Schema({
     validate: [validator.isEmail, 'Please email valid email'],
   },
   profileImage: String,
-  googleProfileImage: String,
-  facebookProfileImage: String,
   phone: String,
   role: {
     type: String,
