@@ -1,8 +1,8 @@
 const URL = () => {
   if (process.env.NODE_ENV === 'development') {
-    return process.env.API_BASE_URL_DEV;
+    return 'http://localhost:8000';
   } else {
-    return process.env.API_BASE_URL_PROD;
+    return 'https://simpleai.onrender.com';
   }
 };
 
