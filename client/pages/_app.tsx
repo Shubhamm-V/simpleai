@@ -22,7 +22,7 @@ const MyApp: React.FC<AppProps> = ({
     <ConfigProvider theme={antdTheme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
-          <SessionProvider session={...pageProps}>
+          <SessionProvider session={pageProps.session}>
             <Component {...pageProps} />
           </SessionProvider>
         </PersistGate>
