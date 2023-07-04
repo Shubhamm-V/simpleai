@@ -4,3 +4,10 @@ const URL =
     : 'https://simpleai.onrender.com';
 
 export default URL;
+
+export const IGONRE_WRAPPER_PAGES = [
+  '/',
+  '/signup',
+  '/auth/login',
+  '/auth/signup',
+];

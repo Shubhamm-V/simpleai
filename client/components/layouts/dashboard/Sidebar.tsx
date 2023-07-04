@@ -9,6 +9,7 @@ import {
   UserOutlined,
   CloseOutlined,
 } from '@ant-design/icons';
+import Link from 'next/link';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -66,7 +67,9 @@ const Sidebar = (props: Props) => {
                 <SubMenu key={item.key} icon={item.icon} title={item.title}>
                   {item.children.map((subItem) => (
                     <Menu.Item key={subItem.key} className={classes.subMenu}>
-                      {subItem.title}
+                      <Link href={`/${item.key}/${subItem.key}`}>
+                        {subItem.title}
+                      </Link>
                     </Menu.Item>
                   ))}
                 </SubMenu>

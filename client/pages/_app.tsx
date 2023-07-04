@@ -7,6 +7,9 @@ import { AppProps } from 'next/app';
 import '../styles/global.scss';
 import '../styles/antd.scss';
 import { SessionProvider } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { IGONRE_WRAPPER_PAGES } from '@/constants/url';
+import DashLayout from '@/components/layouts/dashboard/DashLayout';
 
 const antdTheme = {
   token: {
@@ -18,12 +21,20 @@ const MyApp: React.FC<AppProps> = ({
   Component,
   pageProps: { session, ...pageProps },
 }) => {
+  const router = useRouter();
+  const shouldRenderWrapper = !IGONRE_WRAPPER_PAGES.includes(router.pathname);
   return (
     <ConfigProvider theme={antdTheme}>
       <Provider store={store}>
         <PersistGate loading={null} persistor={persistor}>
           <SessionProvider session={pageProps.session}>
-            <Component {...pageProps} />
+            {!shouldRenderWrapper ? (
+              <Component {...pageProps} />
+            ) : (
+              <DashLayout>
+                <Component {...pageProps} />
+              </DashLayout>
+            )}
           </SessionProvider>
         </PersistGate>
       </Provider>

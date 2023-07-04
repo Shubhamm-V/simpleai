@@ -13,22 +13,26 @@ export const MENU_ITEMS = [
 
 export const SIDE_MENU_ITEMS = [
   {
-    key: '1',
+    key: 'dashboard',
     icon: <UserOutlined />,
     title: 'Dashboard',
   },
   {
-    key: 'sub1',
+    key: 'youtube',
     icon: <PieChartOutlined />,
-    title: 'Charts',
+    title: 'Youtube',
     children: [
       {
-        key: '2',
-        title: 'Chart 1',
+        key: 'summarize_video',
+        title: 'Summarize Video',
       },
       {
-        key: '3',
-        title: 'Chart 2',
+        key: 'extract_subtitles',
+        title: 'Extract Subtitles',
+      },
+      {
+        key: 'extract_audio',
+        title: 'Extract Audio',
       },
     ],
   },
