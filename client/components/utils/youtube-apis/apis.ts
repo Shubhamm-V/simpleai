@@ -48,3 +48,50 @@ export const getSummary = async (text: string) => {
   const response = (await axios.request(options)).data.output[0].text;
   return response;
 };
+
+export const getTranslation = async (
+  text: string,
+  from: string,
+  to: string
+) => {
+  const options = {
+    method: 'POST',
+    url: process.env.TRANSLATE_API,
+    headers: {
+      'Content-type': 'application/json',
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Host': process.env.TRANSLATE_HOST,
+    },
+    data: {
+      from,
+      to,
+      q: text,
+    },
+  };
+  const response = await (await axios.request(options)).data[0];
+  return response;
+};
+
+export const getTexttoVoice = async (language: string, text: string) => {
+  const encodedParams = new URLSearchParams();
+  encodedParams.set('src', text);
+  encodedParams.set('hl', language);
+  encodedParams.set('r', '0');
+  encodedParams.set('b64', 'true');
+  encodedParams.set('f', '8khz_8bit_mono');
+  const options = {
+    method: 'POST',
+    url: process.env.TEXT_TO_SPEECH_API,
+    params: {
+      key: process.env.TEXT_TO_SPEECH_KEY,
+    },
+    headers: {
+      'content-type': 'application/x-www-form-urlencoded',
+      'X-RapidAPI-Key': process.env.RAPID_API_KEY,
+      'X-RapidAPI-Host': process.env.TEXT_TO_SPEECH_HOST,
+    },
+    data: encodedParams,
+  };
+  const response = await axios.request(options);
+  return response.data;
+};

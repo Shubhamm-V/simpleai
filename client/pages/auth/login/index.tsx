@@ -48,6 +48,7 @@ const Login = (props: Props) => {
       if (provider === 'google') {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
+            openNotification({ type: 'success', message: 'Login successful' });
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
           }
@@ -55,6 +56,7 @@ const Login = (props: Props) => {
       } else if (provider === 'facebook') {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
+            openNotification({ type: 'success', message: 'Login successful' });
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
           }

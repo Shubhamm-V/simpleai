@@ -65,6 +65,11 @@ code {
   z-index: 0;
 }
 
+audio::-webkit-media-controls-play-button,
+audio::-webkit-media-controls-panel {
+  background-color: rgb(200, 200, 220);
+}
+
 // Chrome authfill background color
 input:-webkit-autofill,
 input:-webkit-autofill:hover,

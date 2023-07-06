@@ -23,8 +23,6 @@
 .sidebar {
   position: relative !important;
   height: 100vh !important;
-  overflow: scroll;
-  z-index: 999 !important;
   background-color: var(--theme-color) !important;
 }
 .sidebar::-webkit-scrollbar {
@@ -41,6 +39,10 @@
 
 .close {
   display: none !important;
+}
+
+.sideLayout {
+  height: 100vh;
 }
 
 @media (max-width: 576px) {

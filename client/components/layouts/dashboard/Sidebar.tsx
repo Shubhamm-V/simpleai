@@ -84,7 +84,7 @@ const Sidebar = (props: Props) => {
           })}
         </Menu>
       </Sider>
-      <Layout>
+      <Layout className={classes.sideLayout}>
         <Header className={classes.header}>
           {collapsed ? (
             <Button

@@ -23,8 +23,8 @@ export const SIDE_MENU_ITEMS = [
     title: 'Youtube',
     children: [
       {
-        key: 'summarize_video',
-        title: 'Summarize Video',
+        key: 'translate_video',
+        title: 'AI Translation',
       },
       {
         key: 'extract_subtitles',
