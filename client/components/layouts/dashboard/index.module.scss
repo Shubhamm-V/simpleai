@@ -23,10 +23,15 @@
 .sidebar {
   position: relative !important;
   height: 100vh !important;
+  overflow: scroll;
   z-index: 999 !important;
   background-color: var(--theme-color) !important;
 }
+.sidebar::-webkit-scrollbar {
+  display: none;
+}
 .content {
+  max-height: 100vh !important;
   color: var(--sub-primary-color) !important;
   background-color: var(--subtheme-color) !important;
 }

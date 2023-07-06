@@ -2,6 +2,11 @@ import React, { useState } from 'react';
 import { Row, Col, Button, Input, Divider, Card } from 'antd';
 import classes from './index.module.scss';
 import axios from 'axios';
+import openNotification from '@/components/utils/Notification';
+import {
+  getSummary,
+  getVideoSubtitles,
+} from '../../../components/utils/youtube-apis/apis';
 type Props = {};
 
 const SummarizeVideo = (props: Props) => {
@@ -10,21 +15,12 @@ const SummarizeVideo = (props: Props) => {
   const [loading, setLoading] = useState(false);
 
   const summarizeVideo = async () => {
-    const options = {
-      method: 'GET',
-      url: process.env.SUMMARIZE_URL,
-      params: {
-        url,
-        key: process.env.OPENAPI_KEY,
-      },
-      headers: {
-        'X-RapidAPI-Key': process.env.RAPID_API_KEY,
-        'X-RapidAPI-Host': process.env.RAPID_API_HOST,
-      },
-    };
-
-    const response = await axios(options);
-    console.log('Response : ', response);
+    setLoading(true);
+    const subtitles = await getVideoSubtitles(url);
+    const summary = await getSummary(subtitles);
+    setSummary(subtitles);
+    console.log('summary : ', summary);
+    setLoading(false);
   };
   return (
     <Row>
@@ -41,14 +37,14 @@ const SummarizeVideo = (props: Props) => {
           className={classes.input}
           onChange={(e) => setURL(e.target.value)}
         />
-        <Button type="primary" onClick={summarizeVideo}>
+        <Button type="primary" onClick={summarizeVideo} loading={loading}>
           Summarize
         </Button>
       </Col>
       <Col span={24}>
         <Card className={classes.summaryCard}>
           {summary ? (
-            <div>{summary}</div>
+            <div className={classes.summary}>{summary}</div>
           ) : (
             <div>
               <h2>How it works?</h2>

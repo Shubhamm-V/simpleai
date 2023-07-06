@@ -3,9 +3,10 @@ const nextConfig = {
   reactStrictMode: true,
   env: {
     RAPID_API_KEY: process.env.RAPID_API_KEY,
-    RAPID_API_HOST: process.env.RAPID_API_HOST,
-    SUMMARIZE_URL: process.env.SUMMARIZE_URL,
-    OPENAPI_KEY: process.env.SUMMARIZE_URL,
+    SUBTITLE_HOST: process.env.RAPID_API_HOST,
+    SUBTITLE_API: process.env.SUBTITLE_API,
+    SUMMARY_HOST: process.env.SUMMARY_HOST,
+    SUMMARY_API: process.env.SUMMARY_API,
   },
 };
 

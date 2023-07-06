@@ -10,6 +10,24 @@
     background-color: #c1a104 !important;
   }
 }
+.summary {
+  max-height: 25vw;
+  padding-inline: 0.8rem;
+  overflow-y: scroll;
+}
+
+.summary::-webkit-scrollbar {
+  width: 0.3rem;
+}
+.summary::-webkit-scrollbar-track-piece {
+  background: gray;
+}
+.summary::-webkit-scrollbar-thumb {
+  background: #3d3d3d;
+}
+.summary::-webkit-scrollbar-button {
+  display: none !important;
+}
 
 .summarizeBody {
   margin-top: 1rem;
