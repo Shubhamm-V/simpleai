@@ -1,5 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Layout, Menu, Avatar, Button } from 'antd';
+import { Layout, Menu, Avatar, Button, Affix } from 'antd';
 import { SIDE_MENU_ITEMS } from '@/constants/menu';
 import classes from './index.module.scss';
 import { useSelector } from 'react-redux';
@@ -43,72 +43,77 @@ const Sidebar = (props: Props) => {
 
   return (
     <Fragment>
-      <Sider
-        trigger={null}
-        collapsible
-        width={windowWidth <= 576 ? '85vw' : '17vw'}
-        collapsed={collapsed}
-        collapsedWidth={0}
-        className={classes.sidebar}
-      >
-        <div className={classes.logoContainer}>
-          <h1>SimpleAI</h1>
-          <CloseOutlined className={classes.close} onClick={toggleSidebar} />
-        </div>
-        <Menu
-          theme="dark"
-          mode="inline"
-          defaultSelectedKeys={['1']}
-          className={classes.menu}
+      <Affix>
+        <Sider
+          trigger={null}
+          collapsible
+          width={windowWidth <= 576 ? '85vw' : '17vw'}
+          collapsed={collapsed}
+          collapsedWidth={0}
+          className={classes.sidebar}
         >
-          {SIDE_MENU_ITEMS.map((item) => {
-            if (item.children) {
-              return (
-                <SubMenu key={item.key} icon={item.icon} title={item.title}>
-                  {item.children.map((subItem) => (
-                    <Menu.Item key={subItem.key} className={classes.subMenu}>
-                      <Link href={`/${item.key}/${subItem.key}`}>
-                        {subItem.title}
-                      </Link>
-                    </Menu.Item>
-                  ))}
-                </SubMenu>
-              );
-            }
-
-            return (
-              <Menu.Item key={item.key} icon={item.icon}>
-                {item.title}
-              </Menu.Item>
-            );
-          })}
-        </Menu>
-      </Sider>
-      <Layout className={classes.sideLayout}>
-        <Header className={classes.header}>
-          {collapsed ? (
-            <Button
-              onClick={toggleSidebar}
-              className={classes.toggle}
-              icon={<MenuUnfoldOutlined />}
-            />
-          ) : (
-            <Button
-              onClick={toggleSidebar}
-              className={classes.toggle}
-              icon={<MenuFoldOutlined />}
-            />
-          )}
-          <div className="profile">
-            {/* Profile section content */}
-            <Avatar
-              size="small"
-              src={user.profileImage}
-              icon={<UserOutlined />}
-            />
-            <span style={{ marginLeft: 8 }}>{user.name}</span>
+          <div className={classes.logoContainer}>
+            <h1>SimpleAI</h1>
+            <CloseOutlined className={classes.close} onClick={toggleSidebar} />
           </div>
-        </Header>
+          <Menu
+            theme="dark"
+            mode="inline"
+            defaultSelectedKeys={['1']}
+            className={classes.menu}
+          >
+            {SIDE_MENU_ITEMS.map((item) => {
+              if (item.children) {
+                return (
+                  <SubMenu key={item.key} icon={item.icon} title={item.title}>
+                    {item.children.map((subItem) => (
+                      <Menu.Item key={subItem.key} className={classes.subMenu}>
+                        <Link href={`/${item.key}/${subItem.key}`}>
+                          {subItem.title}
+                        </Link>
+                      </Menu.Item>
+                    ))}
+                  </SubMenu>
+                );
+              }
+
+              return (
+                <Menu.Item key={item.key} icon={item.icon}>
+                  {item.title}
+                </Menu.Item>
+              );
+            })}
+          </Menu>
+        </Sider>
+      </Affix>
+
+      <Layout className={classes.sideLayout}>
+        <Affix>
+          <Header className={classes.header}>
+            {collapsed ? (
+              <Button
+                onClick={toggleSidebar}
+                className={classes.toggle}
+                icon={<MenuUnfoldOutlined />}
+              />
+            ) : (
+              <Button
+                onClick={toggleSidebar}
+                className={classes.toggle}
+                icon={<MenuFoldOutlined />}
+              />
+            )}
+            <div className="profile">
+              {/* Profile section content */}
+              <Avatar
+                size="small"
+                src={user.profileImage}
+                icon={<UserOutlined />}
+              />
+              <span style={{ marginLeft: 8 }}>{user.name}</span>
+            </div>
+          </Header>
+        </Affix>
         <Content className={classes.content}>{props.content}</Content>
       </Layout>
     </Fragment>

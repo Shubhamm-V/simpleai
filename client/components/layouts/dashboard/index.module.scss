@@ -10,6 +10,7 @@
   padding-left: 0.5rem !important;
   padding-right: 1rem !important;
   display: flex !important;
+  z-index: 988;
   align-items: center !important;
   justify-content: space-between !important;
   color: var(--sub-primary-color) !important;
@@ -23,6 +24,7 @@
 .sidebar {
   position: relative !important;
   height: 100vh !important;
+  z-index: 999;
   background-color: var(--theme-color) !important;
 }
 .sidebar::-webkit-scrollbar {

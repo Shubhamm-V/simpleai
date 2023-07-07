@@ -1,5 +1,15 @@
 import React, { Fragment, useState } from 'react';
-import { Row, Col, Button, Input, Divider, Card, Select } from 'antd';
+import {
+  Row,
+  Col,
+  Button,
+  Input,
+  Divider,
+  Card,
+  Select,
+  Modal,
+  Form,
+} from 'antd';
 import classes from './index.module.scss';
 import { TRANSLATE_LANGUAGES } from '@/constants/languages';
 import {
@@ -10,37 +20,122 @@ import {
 } from '../../../components/utils/youtube-apis/apis';
 import { TRANSLATION_STEPS } from '@/constants/steps';
 import Paragraph from '@/components/text/Paragraph';
+import { SaveOutlined } from '@ant-design/icons';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import URL from '@/constants/url';
+import openNotification from '@/components/utils/Notification';
 type Props = {};
-
-const SummarizeVideo = (props: Props) => {
+type Translation = {
+  title: string;
+  subtitles: string;
+  translation: string;
+};
+const TranslateVideo = (props: Props) => {
   const [url, setURL] = useState('');
   const [summary, setSummary] = useState('');
   const [loading, setLoading] = useState(false);
+  const [saveLoading, setSaveLoading] = useState(false);
   const [language, setLanguage] = useState('en-US');
   const [audio, setAudio] = useState(null);
+  const [visible, setVisible] = useState(false);
+  const [translationInfo, setTranslation] = useState<Translation>({
+    title: '',
+    subtitles: '',
+    translation: '',
+  });
+  const userInfo = useSelector((state: any) => state.userReducer.user);
+  const user = userInfo.data.user;
 
-  const summarizeVideo = async () => {
+  const [form] = Form.useForm();
+
+  const translateVideo = async () => {
     setLoading(true);
-    const subtitles = await getVideoSubtitles(url);
-    // const subtitles = await getSummary(subtitles);
-    const translation = await getTranslation(subtitles, 'en-US', language);
-    const translationAudio: any = await getTexttoVoice(
-      language.toLowerCase(),
-      translation
-    );
 
-    setAudio(translationAudio);
-    console.log('Audio : ', audio);
-    setSummary(translation);
-    setLoading(false);
+    // getting subtitles
+    let subtitles;
+    try {
+      subtitles = await getVideoSubtitles(url);
+    } catch (error) {
+      openNotification({
+        type: 'error',
+        message: "Video doesn't have subtitles",
+      });
+      setLoading(false);
+      return;
+    }
+
+    if (!subtitles) {
+      setLoading(false);
+      return;
+    }
+    // const subtitles = await getSummary(subtitles);
+
+    // translating subtitles
+    let subtitleTranslation;
+    try {
+      subtitleTranslation = await getTranslation(subtitles, 'en-US', language);
+    } catch (error) {
+      setLoading(false);
+      openNotification({ type: 'error', message: 'Something went wrong' });
+      return;
+    }
+
+    // generating audio
+    try {
+      const translationAudio: any = await getTexttoVoice(
+        language.toLowerCase(),
+        subtitleTranslation
+      );
+      setAudio(translationAudio);
+      setTranslation({
+        ...translationInfo,
+        subtitles,
+        translation: subtitleTranslation,
+      });
+      console.log('Audio : ', audio);
+      setSummary(subtitleTranslation);
+      setLoading(false);
+    } catch (error) {
+      openNotification({ type: 'error', message: 'Something went wrong' });
+    }
   };
 
   const onSelectChange = (value: string) => {
     setLanguage(value);
   };
 
+  const onFinish = async (values: { title: string }) => {
+    setSaveLoading(true);
+    try {
+      const res = await axios.post(
+        `${URL}/api/v1/youtube/${user._id}/translations`,
+        {
+          title: translationInfo.title,
+          subtitles: translationInfo.subtitles,
+          translation: translationInfo.translation,
+          language,
+          url,
+        }
+      );
+      console.log('Response : ', res.data);
+      setSaveLoading(false);
+      setVisible(false);
+      openNotification({
+        type: 'success',
+        message: 'Translation Saved Successfully',
+      });
+    } catch (error) {
+      openNotification({
+        type: 'error',
+        message: 'SOmething went wrong',
+      });
+      setSaveLoading(false);
+    }
+  };
+
   return (
-    <Row>
+    <Row style={{ paddingBottom: '2rem' }}>
       <Col span={24} className={classes.summarizeHeader}>
         <h2>Youtube AI Voice Translation</h2>
         <Button type="primary" className={classes.translations} size="large">
@@ -64,7 +159,7 @@ const SummarizeVideo = (props: Props) => {
             option?.label?.toLowerCase().includes(input.toLowerCase())
           }
         />
-        <Button type="primary" onClick={summarizeVideo} loading={loading}>
+        <Button type="primary" onClick={translateVideo} loading={loading}>
           Translate
         </Button>
       </Col>
@@ -82,7 +177,17 @@ const SummarizeVideo = (props: Props) => {
         <Card className={classes.summaryCard}>
           {summary ? (
             <Fragment>
-              <h3>Read</h3>
+              <Col span={24} className={classes.textHeader}>
+                <h3>Read</h3>
+                <Button
+                  type="primary"
+                  className={classes.saveButton}
+                  onClick={() => setVisible(true)}
+                >
+                  <SaveOutlined />
+                  Save
+                </Button>
+              </Col>
               <div className={classes.summary}>{summary}</div>
             </Fragment>
           ) : (
@@ -102,8 +207,44 @@ const SummarizeVideo = (props: Props) => {
           )}
         </Card>
       </Col>
+      <Modal
+        footer={false}
+        centered
+        open={visible}
+        className={classes.saveModal}
+        onCancel={() => setVisible(false)}
+      >
+        <h2>Save Translation</h2>
+        <Form
+          form={form}
+          name="horizontal_login"
+          layout="vertical"
+          onFinish={onFinish}
+        >
+          <Form.Item
+            name="title"
+            label="Title"
+            rules={[{ required: true, message: 'Please input your title.' }]}
+          >
+            <Input
+              placeholder="Title"
+              onChange={(e) =>
+                setTranslation({ ...translationInfo, title: e.target.value })
+              }
+            />
+          </Form.Item>
+
+          <Form.Item shouldUpdate>
+            {() => (
+              <Button type="primary" htmlType="submit" loading={saveLoading}>
+                Save
+              </Button>
+            )}
+          </Form.Item>
+        </Form>
+      </Modal>
     </Row>
   );
 };
 
-export default SummarizeVideo;
+export default TranslateVideo;

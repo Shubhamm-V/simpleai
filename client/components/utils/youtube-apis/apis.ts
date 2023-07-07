@@ -8,15 +8,19 @@ export const getVideoID = (url: string) => {
   if (videoid != null) {
     return videoid[1];
   } else {
-    openNotification({
-      type: 'info',
-      message: 'Invalid URL',
-    });
+    return null;
   }
 };
 
 export const getVideoSubtitles = async (url: string) => {
   const videoId = getVideoID(url);
+  if (!videoId) {
+    openNotification({
+      type: 'info',
+      message: 'Please enter valid URL',
+    });
+    return;
+  }
   const options = {
     method: 'GET',
     url: process.env.SUBTITLE_API,

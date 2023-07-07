@@ -69,6 +69,28 @@
   }
 }
 
+.textHeader {
+  display: flex !important;
+  align-items: center !important;
+  padding: 0.5rem 0;
+  justify-content: space-between !important;
+  .saveButton {
+    color: var(--primary-color) !important;
+    background-color: transparent !important;
+    border-color: var(--primary-color) !important;
+  }
+}
+.summaryCard {
+  margin-bottom: 0 !important;
+  margin-inline: 0.8rem !important;
+}
+
+.saveModal {
+  h2 {
+    color: var(--sub-primary-color);
+  }
+}
+
 .warn {
   text-align: center;
   color: rgb(252, 179, 43);
@@ -79,9 +101,7 @@
     display: flex !important;
     align-items: center;
   }
-  .summaryCard {
-    margin-inline: 0.8rem !important;
-  }
+
   .summarizeHeader {
     padding-top: 1rem !important;
     margin-top: 0.5rem !important;
@@ -101,5 +121,8 @@
     h1 {
       font-size: 1.5rem;
     }
+  }
+  .summary {
+    max-height: 50vh !important;
   }
 }
