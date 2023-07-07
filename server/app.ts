@@ -6,6 +6,7 @@ const express = require('express');
 const rateLimit = require('express-rate-limit');
 const mongoSanitize = require('express-mongo-sanitize');
 const userRoute = require('./routes/userRouter');
+const youtubeRoute = require('./routes/youtubeRouter');
 const errorController = require('./controllers/errorController');
 const cors = require('./utils/accessCors');
 
@@ -56,6 +57,7 @@ app.use('/api', limiter);
 app.use(cors);
 
 app.use('/api/v1/users', userRoute);
+app.use('/api/v1/youtube', youtubeRoute);
 
 // Global Error Handling Middleware
 app.use(errorController);

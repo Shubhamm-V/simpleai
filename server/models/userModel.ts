@@ -38,6 +38,15 @@ const userSchema = new mongoose.Schema({
       },
     },
   },
+  youtubeTranslations: [
+    {
+      title: String,
+      url: String,
+      subtitles: String,
+      translation: String,
+      language: String,
+    },
+  ],
   loginType: {
     type: String,
     enum: ['email', 'google'],
