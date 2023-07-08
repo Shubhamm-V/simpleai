@@ -25,6 +25,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import URL from '@/constants/url';
 import openNotification from '@/components/utils/Notification';
+import Link from 'next/link';
 type Props = {};
 type Translation = {
   title: string;
@@ -138,9 +139,11 @@ const TranslateVideo = (props: Props) => {
     <Row style={{ paddingBottom: '2rem' }}>
       <Col span={24} className={classes.summarizeHeader}>
         <h2>Youtube AI Voice Translation</h2>
-        <Button type="primary" className={classes.translations} size="large">
-          Your Translations
-        </Button>
+        <Link href="/youtube/translations">
+          <Button type="primary" className={classes.translations} size="middle">
+            Your Translations
+          </Button>
+        </Link>
       </Col>
       <Divider className={classes.divider} />
       <Col span={24} className={classes.summarizeBody}>

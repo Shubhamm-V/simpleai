@@ -1,0 +1,36 @@
+.link {
+  color: var(--primary-color);
+}
+
+.headerWrapper {
+  display: flex !important;
+  padding: 1rem 1rem !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+}
+
+.tableWrapper {
+  padding: 0.5rem 1rem !important;
+}
+
+.modal {
+  max-height: 70vh;
+  overflow-y: scroll;
+  p {
+    font-size: 1rem;
+    color: var(--sub-primary-color) !important;
+  }
+}
+
+.modal::-webkit-scrollbar {
+  width: 0.3rem;
+}
+.modal::-webkit-scrollbar-track-piece {
+  background: gray;
+}
+.modal::-webkit-scrollbar-thumb {
+  background: #3d3d3d;
+}
+.modal::-webkit-scrollbar-button {
+  display: none !important;
+}

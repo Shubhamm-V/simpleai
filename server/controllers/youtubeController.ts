@@ -39,7 +39,7 @@ export const saveTranslation = createAsync(
 
 export const viewTranslations = createAsync(
   async (req: Request, res: Response, next: NextFunction) => {
-    const translations = User.findById(req.params.id).select(
+    const translations = await User.findById(req.params.id).select(
       'youtubeTranslations'
     );
     if (!translations) {

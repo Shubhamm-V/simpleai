@@ -96,3 +96,30 @@
 .ant-modal .ant-modal-content {
   background-color: #32343d !important;
 }
+
+.ant-table-thead .ant-table-cell {
+  background-color: var(--theme-color) !important;
+  border: 1px solid #393a43 !important;
+  color: var(--sub-primary-color) !important;
+}
+.ant-table-tbody .ant-table-cell {
+  background-color: var(--subtheme-color) !important;
+  border: 1px solid #393a43 !important;
+  color: var(--sub-primary-color) !important;
+}
+.ant-menu-submenu-title:hover {
+  .ant-menu-submenu-arrow::before,
+  .ant-menu-submenu-arrow::after {
+    background: var(--primary-color) !important;
+  }
+}
+.ant-pagination .ant-pagination-item-active a {
+  color: var(--sub-primary-color) !important;
+  background-color: #393a43 !important;
+  border-color: var(--sub-theme-color) !important;
+}
+
+.ant-pagination .ant-pagination-item a {
+  color: var(--sub-primary-color) !important;
+  background-color: #272838 !important;
+}

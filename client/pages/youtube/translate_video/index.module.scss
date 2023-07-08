@@ -96,18 +96,12 @@
   color: rgb(252, 179, 43);
   margin-top: 2rem;
 }
-@media (max-width: 576px) {
-  .translations {
-    display: flex !important;
-    align-items: center;
-  }
 
+@media (max-width: 576px) {
   .summarizeHeader {
     padding-top: 1rem !important;
     margin-top: 0.5rem !important;
-    flex-direction: column-reverse !important;
-    align-items: flex-end !important;
-    gap: 1rem;
+    gap: 0.5rem;
   }
   .summarizeBody {
     flex-wrap: wrap;
@@ -119,7 +113,7 @@
   }
   .infoContainer {
     h1 {
-      font-size: 1.5rem;
+      font-size: 1.2rem;
     }
   }
   .summary {
