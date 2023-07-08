@@ -22,6 +22,9 @@
   }
 }
 
+.plus svg {
+  color: var(--sub-primary-color) !important;
+}
 .modal::-webkit-scrollbar {
   width: 0.3rem;
 }

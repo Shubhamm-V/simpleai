@@ -8,6 +8,7 @@ import openNotification from '@/components/utils/Notification';
 import { TRANSLATE_LANGUAGES } from '@/constants/languages';
 import classes from './index.module.scss';
 import Link from 'next/link';
+import { PlusOutlined } from '@ant-design/icons';
 type Props = {};
 
 const Translations = (props: Props) => {
@@ -109,7 +110,10 @@ const Translations = (props: Props) => {
         <Col span={24} className={classes.headerWrapper}>
           <h2>Your Translations</h2>
           <Link href="/youtube/translate_video">
-            <Button type="primary">Translations</Button>
+            <Button type="primary">
+              <PlusOutlined className={classes.plus} />
+              Create New
+            </Button>
           </Link>
         </Col>
         <Col span={24} className={classes.tableWrapper}>

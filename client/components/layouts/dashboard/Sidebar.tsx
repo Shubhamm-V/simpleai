@@ -20,6 +20,7 @@ const Sidebar = (props: Props) => {
   const [collapsed, setCollapsed] = useState(false);
   const [windowWidth, setWindowWidth] = useState(1300);
   const [screenLoad, setScreenLoad] = useState(false);
+  const [showSidebar, setShowSidebar] = useState(false);
   const userInfo = useSelector((state: any) => state.userReducer.user);
   const user = userInfo.data.user;
   useEffect(() => {
@@ -47,10 +48,12 @@ const Sidebar = (props: Props) => {
         <Sider
           trigger={null}
           collapsible
-          width={windowWidth <= 576 ? '85vw' : '17vw'}
+          width={windowWidth <= 1100 ? '85vw' : '17vw'}
           collapsed={collapsed}
           collapsedWidth={0}
-          className={classes.sidebar}
+          className={`${showSidebar ? classes.show : classes.hide} ${
+            classes.sidebar
+          }`}
         >
           <div className={classes.logoContainer}>
             <h1>SimpleAI</h1>
@@ -92,7 +95,10 @@ const Sidebar = (props: Props) => {
           <Header className={classes.header}>
             {collapsed ? (
               <Button
-                onClick={toggleSidebar}
+                onClick={() => {
+                  setShowSidebar(true);
+                  toggleSidebar();
+                }}
                 className={classes.toggle}
                 icon={<MenuUnfoldOutlined />}
               />
