@@ -14,7 +14,7 @@
 }
 
 .anticon svg {
-  color: var(--primary-color) !important;
+  color: var(--sub-primary-color) !important;
 }
 
 .ant-input-affix-wrapper {
@@ -131,4 +131,24 @@
     .ant-table-row-expand-icon-cell
   ):not([colspan])::before {
   background-color: transparent !important;
+}
+
+.ant-collapse
+  > .ant-collapse-item
+  > .ant-collapse-header
+  .ant-collapse-header-text {
+  color: var(--sub-primary-color) !important;
+}
+
+.ant-collapse-large
+  > .ant-collapse-item
+  > .ant-collapse-content
+  > .ant-collapse-content-box {
+  padding: 1rem !important;
+  color: var(--sub-primary-color) !important;
+  background-color: #262934 !important;
+}
+
+.ant-empty-normal .ant-empty-description {
+  color: var(--sub-primary-color) !important;
 }

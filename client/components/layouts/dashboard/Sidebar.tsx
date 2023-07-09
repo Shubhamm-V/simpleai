@@ -8,6 +8,7 @@ import {
   MenuFoldOutlined,
   UserOutlined,
   CloseOutlined,
+  LogoutOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
 

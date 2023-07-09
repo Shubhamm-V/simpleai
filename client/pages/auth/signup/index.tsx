@@ -50,6 +50,7 @@ const SignupForm: React.FC = (props: Props) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
+            sessionStorage.clear();
           }
         });
       } else if (provider === 'facebook') {
@@ -57,6 +58,7 @@ const SignupForm: React.FC = (props: Props) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
+            sessionStorage.clear();
           }
         });
       }

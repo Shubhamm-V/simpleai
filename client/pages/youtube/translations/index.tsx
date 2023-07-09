@@ -13,7 +13,6 @@ type Props = {};
 
 const Translations = (props: Props) => {
   const [translations, setTranslations] = useState([]);
-  const [currentPage, setCurrentPage] = useState(1);
   const [subTitle, setSubtitles] = useState('');
   const [translation, setTranslation] = useState('');
   const userInfo = useSelector((state: any) => state.userReducer.user);

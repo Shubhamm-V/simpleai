@@ -10,7 +10,10 @@ export const loginWithGoogleFB = async (session: any, loginType: string) => {
       profileImage: session.user?.image,
       loginType,
     });
-    return res;
+    if (res) {
+      openNotification({ type: 'success', message: 'Login successful' });
+      return res;
+    }
   } catch (error: any) {
     openNotification({ type: 'error', message: 'Something went wrong' });
   }

@@ -9,6 +9,7 @@ import {
   Select,
   Modal,
   Form,
+  Collapse,
 } from 'antd';
 import classes from './index.module.scss';
 import { TRANSLATE_LANGUAGES } from '@/constants/languages';
@@ -209,6 +210,19 @@ const TranslateVideo = (props: Props) => {
             </div>
           )}
         </Card>
+        {translationInfo.subtitles && (
+          <Collapse
+            className={classes.subtitles}
+            size="large"
+            items={[
+              {
+                key: '1',
+                label: 'Original Subtitles',
+                children: <p>{translationInfo.subtitles}</p>,
+              },
+            ]}
+          />
+        )}
       </Col>
       <Modal
         footer={false}

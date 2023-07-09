@@ -1,4 +1,4 @@
-import { UserOutlined, PieChartOutlined } from '@ant-design/icons';
+import { UserOutlined, YoutubeOutlined } from '@ant-design/icons';
 
 export const MENU_ITEMS = [
   {
@@ -19,7 +19,7 @@ export const SIDE_MENU_ITEMS = [
   },
   {
     key: 'youtube',
-    icon: <PieChartOutlined />,
+    icon: <YoutubeOutlined />,
     title: 'Youtube',
     children: [
       {
@@ -27,14 +27,9 @@ export const SIDE_MENU_ITEMS = [
         title: 'AI Translation',
       },
       {
-        key: 'extract_subtitles',
-        title: 'Extract Subtitles',
-      },
-      {
-        key: 'extract_audio',
-        title: 'Extract Audio',
+        key: 'ai_description',
+        title: 'AI Description',
       },
     ],
   },
-  // Add more menu items dynamically
 ];

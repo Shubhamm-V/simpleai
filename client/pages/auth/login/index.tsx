@@ -50,16 +50,16 @@ const Login = (props: Props) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
+            sessionStorage.clear();
           }
-          openNotification({ type: 'success', message: 'Login successful' });
         });
       } else if (provider === 'facebook') {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
+            sessionStorage.clear();
           }
-          openNotification({ type: 'success', message: 'Login successful' });
         });
       }
     }

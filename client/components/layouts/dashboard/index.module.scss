@@ -31,10 +31,15 @@
   display: none;
 }
 .content {
-  max-height: 100vh !important;
   color: var(--sub-primary-color) !important;
+  overflow: scroll !important;
   background-color: var(--subtheme-color) !important;
 }
+
+.content::-webkit-scrollbar {
+  display: none !important;
+}
+
 .toggle {
   background-color: transparent !important;
 }

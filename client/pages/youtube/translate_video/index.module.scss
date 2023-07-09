@@ -97,6 +97,13 @@
   margin-top: 2rem;
 }
 
+.subtitles {
+  margin: 2rem 1rem !important;
+  background-color: #262934 !important;
+  border-color: #32343d !important;
+  color: var(--sub-primary-color) !important;
+}
+
 @media (max-width: 576px) {
   .summarizeHeader {
     padding-top: 1rem !important;
