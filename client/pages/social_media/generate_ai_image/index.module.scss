@@ -1,0 +1,49 @@
+.header {
+  padding: 0.1rem 1.4rem !important;
+  h1 {
+    font-size: 1.8rem !important;
+  }
+}
+.spin {
+  position: absolute !important;
+  z-index: 999 !important;
+}
+.download {
+  border: 1px solid var(--primary-color) !important;
+  position: absolute !important;
+  top: 1rem;
+  right: 1rem;
+}
+.promptHeader {
+  display: flex !important;
+  gap: 0.7rem !important;
+  color: var(--sub-primary-color) !important;
+  margin: 1rem 1.4rem;
+  .input {
+    width: 100% !important;
+    background-color: #262934 !important;
+    border: 1px solid #474b57 !important;
+  }
+}
+.imageContainer {
+  height: 66vh !important;
+  display: flex !important;
+  margin-inline: 1.5rem !important;
+  border: 1px solid #474b57 !important;
+  position: relative !important;
+  align-items: center !important;
+  justify-content: center !important;
+  img {
+    height: 100% !important;
+    padding: 1rem !important;
+    width: 100% !important;
+    object-fit: contain !important;
+  }
+}
+.empty {
+  height: 100% !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  align-items: center !important;
+}

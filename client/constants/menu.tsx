@@ -1,4 +1,8 @@
-import { UserOutlined, YoutubeOutlined } from '@ant-design/icons';
+import {
+  UserOutlined,
+  YoutubeOutlined,
+  InstagramOutlined,
+} from '@ant-design/icons';
 
 export const MENU_ITEMS = [
   {
@@ -29,6 +33,18 @@ export const SIDE_MENU_ITEMS = [
       {
         key: 'ai_description',
         title: 'AI Description',
+      },
+    ],
+  },
+
+  {
+    key: 'social_media',
+    icon: <InstagramOutlined />,
+    title: 'Social Media',
+    children: [
+      {
+        key: 'generate_ai_image',
+        title: 'AI Image Generator',
       },
     ],
   },

@@ -83,7 +83,7 @@ const Sidebar = (props: Props) => {
 
               return (
                 <Menu.Item key={item.key} icon={item.icon}>
-                  {item.title}
+                  <Link href={`/${item.key}}/`}>{item.title}</Link>
                 </Menu.Item>
               );
             })}

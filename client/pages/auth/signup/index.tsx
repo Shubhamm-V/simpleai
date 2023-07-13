@@ -157,7 +157,6 @@ const SignupForm: React.FC = (props: Props) => {
                 className={classes.loginWithButtons}
                 onClick={handleFacebookLogin}
               >
-                {' '}
                 <i>
                   <FacebookOutlined />
                 </i>
