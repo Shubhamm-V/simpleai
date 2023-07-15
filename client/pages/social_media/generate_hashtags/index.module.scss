@@ -1,0 +1,61 @@
+.imageContainer {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 2rem;
+  min-height: 85vh;
+}
+
+.image {
+  height: 60vh !important;
+  width: auto !important;
+}
+
+.imageInfo {
+  margin: 0 !important;
+  padding: 0 !important;
+}
+.uploadButton {
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+  border: 1px solid var(--primary-color) !important;
+}
+.hashtagHeader {
+  display: flex;
+  justify-content: space-between;
+}
+.hashtagButtons {
+  display: flex !important;
+  gap: 0.7rem !important;
+}
+.hashtagContainer {
+  max-height: 22rem !important;
+  overflow-y: scroll !important;
+}
+.hashtagContainer::-webkit-scrollbar {
+  width: 0.2rem;
+}
+.hashtagContainer::-webkit-scrollbar-track-piece {
+  background: #3d3d3d;
+}
+.hashtagContainer::-webkit-scrollbar-thumb {
+  background: gray;
+}
+.hashtagContainer::-webkit-scrollbar-button {
+  display: none !important;
+}
+.copyIcon {
+  margin-right: 0.3rem !important;
+  color: var(--sub-primary-color) !important;
+}
+.tag {
+  background-color: transparent !important;
+  border-color: var(--primary-color) !important;
+  color: var(--primary-color) !important;
+}
+.hashTags {
+  max-width: 25rem !important;
+  display: flex !important;
+  flex-wrap: wrap !important;
+  gap: 0.5rem !important;
+}

@@ -40,11 +40,15 @@ export const SIDE_MENU_ITEMS = [
   {
     key: 'social_media',
     icon: <InstagramOutlined />,
-    title: 'Social Media',
+    title: 'Social Mediaa',
     children: [
       {
         key: 'generate_ai_image',
         title: 'AI Image Generator',
+      },
+      {
+        key: 'generate_hashtags',
+        title: 'Generate Hashtags',
       },
     ],
   },

@@ -13,9 +13,9 @@
   color: gray !important;
 }
 
-.anticon svg {
-  color: var(--sub-primary-color) !important;
-}
+// .anticon svg {
+//   color: var(--primary-color);
+// }
 
 .ant-input-affix-wrapper {
   background-color: var(--subtheme-color) !important;
@@ -153,5 +153,12 @@
   color: var(--sub-primary-color) !important;
 }
 .ant-empty .ant-empty-description {
+  color: var(--sub-primary-color) !important;
+}
+
+.ant-upload-wrapper
+  .ant-upload-list
+  .ant-upload-list-item
+  .ant-upload-list-item-name {
   color: var(--sub-primary-color) !important;
 }
