@@ -3,12 +3,21 @@
   align-items: center !important;
   justify-content: center !important;
   gap: 2rem;
-  min-height: 85vh;
+  min-height: 70vh;
+}
+
+.imageScreen {
+  h1 {
+    text-align: center !important;
+    font-size: 2rem !important;
+  }
 }
 
 .image {
-  height: 60vh !important;
+  height: 65vh !important;
   width: auto !important;
+  border: 1px solid rgb(56, 53, 53) !important;
+  padding: 1rem !important;
 }
 
 .imageInfo {
@@ -23,10 +32,12 @@
 .hashtagHeader {
   display: flex;
   justify-content: space-between;
+  align-items: center !important;
 }
 .hashtagButtons {
   display: flex !important;
   gap: 0.7rem !important;
+  margin-bottom: -0.5rem;
 }
 .hashtagContainer {
   max-height: 22rem !important;
@@ -58,4 +69,56 @@
   display: flex !important;
   flex-wrap: wrap !important;
   gap: 0.5rem !important;
+}
+
+@media (max-width: 700px) {
+  .image {
+    height: 50vh !important;
+  }
+  .imageContainer {
+    min-height: 50vh !important;
+  }
+  .uploadContainer {
+    padding-inline: 0.7rem !important;
+  }
+  .hashtagContainer {
+    margin-bottom: 2rem !important;
+  }
+}
+
+@media (max-width: 500px) {
+  .image {
+    height: 40vh !important;
+    max-width: 95vw !important;
+    object-fit: contain !important;
+  }
+  .uploadContainer {
+    padding-inline: 1.5rem !important;
+    p {
+      line-height: 1.2rem !important;
+    }
+  }
+  .imageScreen {
+    h1 {
+      font-size: 1.5rem !important;
+    }
+  }
+}
+
+@media (max-width: 330px) {
+  .hashtagButtons {
+    gap: 0.5rem !important;
+    .uploadButton {
+      font-size: 0.7rem !important;
+    }
+    .hashButton {
+      font-size: 0.7rem !important;
+    }
+  }
+}
+
+@media (max-width: 275px) {
+  .hashtagButtons {
+    flex-wrap: wrap !important;
+  }
 }

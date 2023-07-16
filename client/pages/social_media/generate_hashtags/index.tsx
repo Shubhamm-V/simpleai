@@ -70,13 +70,14 @@ const UploadDetails = () => {
   };
   return (
     <div className={classes.imageScreen}>
+      <h1> AI Hashtags Generator</h1>
       <Row style={{ marginBottom: '1rem' }} className={classes.imageContainer}>
         <img
           src={userImage || '/images/utilis/Image-upload.png'}
           alt="profile"
           className={classes.image}
         />
-        <div>
+        <div className={classes.uploadContainer}>
           <h3>Upload Image</h3>
           <p>Your path should be in PNG or JPG format</p>
           <div className={classes.hashtagButtons}>
@@ -98,6 +99,7 @@ const UploadDetails = () => {
                 type="primary"
                 onClick={generateHashtags}
                 loading={loading}
+                className={classes.hashButton}
               >
                 Generate Hashtags
               </Button>
