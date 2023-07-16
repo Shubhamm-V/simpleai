@@ -1,10 +1,10 @@
 import React from 'react';
-import Menu from './MenuTop';
+import Header from './Header';
 
 const Layout = (props: React.PropsWithChildren) => {
   return (
     <div>
-      <Menu />
+      <Header />
       <main>{props.children}</main>
     </div>
   );

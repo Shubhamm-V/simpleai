@@ -83,11 +83,12 @@ input:-webkit-autofill:active {
 
 // Container used in project
 .container {
-  padding-inline: 7vw;
+  max-width: 81vw;
+  margin-inline: auto;
 }
 
 @media (max-width: 1200px) {
   .container {
-    padding-inline: 1rem !important;
+    max-width: 95vw;
   }
 }
