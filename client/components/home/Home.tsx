@@ -1,6 +1,7 @@
 import React from 'react';
 import Banner from './Banner';
 import Layout from '../layouts/landing/Layout';
+import Features from './Features';
 
 type Props = {};
 
@@ -9,7 +10,7 @@ const Home = (props: Props) => {
     <Layout>
       <div className="container">
         <Banner />
-        <div style={{ height: '80vh' }}></div>
+        <Features />
       </div>
     </Layout>
   );

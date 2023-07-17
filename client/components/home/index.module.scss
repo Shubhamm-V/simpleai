@@ -9,9 +9,10 @@
 .info {
   display: flex !important;
   flex-direction: column !important;
+  align-items: center !important;
   justify-content: center !important;
   h1 {
-    font-size: 2.4rem !important;
+    font-size: 3rem !important;
     line-height: 3.5rem;
     margin: 0;
     .title {
@@ -22,6 +23,8 @@
     line-height: 1.9rem;
     font-size: 1.4rem;
     margin: 1.5rem 0 !important;
+    text-align: center !important;
+    padding-inline: 3rem !important;
   }
 }
 .bannerImage {
@@ -38,9 +41,38 @@
   font-weight: bold;
   width: 100% !important;
 }
-
+.content {
+  display: flex !important;
+  justify-content: center !important;
+}
 .featureButton {
   background-color: #c1a104 !important;
+}
+.featureContainer {
+  display: flex !important;
+  justify-content: space-between !important;
+  gap: 2rem !important;
+  padding-bottom: 2rem !important;
+}
+.featureCard {
+  background-color: transparent !important;
+  border-color: var(--primary-color) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  color: var(--sub-primary-color) !important;
+  height: 16rem !important;
+  h2 {
+    color: var(--primary-color);
+  }
+}
+
+.buttonContainer {
+  margin-top: 0.5rem;
+  width: 22vw;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
 }
 
 @media (max-width: 850px) {
@@ -48,7 +80,9 @@
     height: 110% !important;
     padding-bottom: 2.5rem !important;
   }
-
+  .buttonContainer {
+    width: 30vw;
+  }
   .bannerImage {
     display: flex !important;
     align-items: flex-start !important;
@@ -58,7 +92,9 @@
 
 @media (max-width: 576px) {
   .info {
+    align-items: flex-start !important;
     justify-content: flex-start !important;
+
     h1 {
       font-size: 1.6rem !important;
       word-wrap: break-word !important;
@@ -69,9 +105,11 @@
     p {
       line-height: 1.4rem;
       font-size: 0.8rem;
+      text-align: left;
+      padding-inline: 0 !important;
     }
   }
-  .bannerImage {
+  \ .bannerImage {
     img {
       height: 90% !important;
     }
@@ -82,6 +120,17 @@
   .info {
     h1 {
       font-size: 1.6rem !important;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .featureContainer {
+    justify-content: center !important;
+  }
+  .bannerImage {
+    img {
+      display: none !important;
     }
   }
 }

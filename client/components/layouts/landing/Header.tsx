@@ -6,7 +6,7 @@ type Props = {};
 
 const Header = (props: Props) => {
   return (
-    <Row className={classes.header}>
+    <Row className={`container ${classes.header}`}>
       <h2>SimpleAI</h2>
       <Link href="/auth/signup">
         <Button className={classes.exploreButton} size="large" type="primary">

@@ -1,3 +1,5 @@
+import { BookFilled, InstagramFilled, YoutubeFilled } from '@ant-design/icons';
+
 export const TRANSLATION_STEPS = [
   {
     id: 1,
@@ -14,5 +16,31 @@ export const TRANSLATION_STEPS = [
   {
     id: 4,
     text: ' 4.  It may take up to 20 Sec to 1 Min to generate audio with your required language',
+  },
+];
+
+export const STEPS = [
+  {
+    title: 'AI Video Translation',
+    description:
+      'Translate english youtube video in 10+ languages with audio format',
+    icon: <YoutubeFilled className="featureIcons" />,
+  },
+  {
+    title: 'AI Hashtags Generator',
+    description: 'Generate most trending hashtags by uploading your image',
+    icon: <InstagramFilled className="featureIcons" />,
+  },
+  {
+    title: 'AI Post Generator',
+    description:
+      'Generate any social media post by adding prompt for the image',
+    icon: <InstagramFilled className="featureIcons" />,
+  },
+  {
+    title: 'AI Text Summarizer',
+    description:
+      'Convert your large articles/text into 4-5 lines of summarized text',
+    icon: <BookFilled className="featureIcons" />,
   },
 ];

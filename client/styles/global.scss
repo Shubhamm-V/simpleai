@@ -87,6 +87,16 @@ input:-webkit-autofill:active {
   margin-inline: auto;
 }
 
+.featureIcons {
+  font-size: 2rem !important;
+}
+
+@media (max-width: 1200px) {
+  .container {
+    max-width: 81vw;
+  }
+}
+
 @media (max-width: 1200px) {
   .container {
     max-width: 95vw;
