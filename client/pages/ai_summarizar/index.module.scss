@@ -1,0 +1,33 @@
+.summaryCard {
+  margin: 2rem 0 2rem 0 !important;
+  font-size: 1rem !important;
+  border-color: #32343d !important;
+  background-color: #262934 !important;
+  color: var(--sub-primary-color) !important;
+  h2 {
+    margin-top: 1rem !important;
+    margin-bottom: 0.5rem !important;
+  }
+}
+.summary {
+  max-height: 25vw;
+  overflow-y: scroll;
+}
+
+.summary::-webkit-scrollbar {
+  width: 0.3rem;
+}
+.summary::-webkit-scrollbar-track-piece {
+  background: gray;
+}
+.summary::-webkit-scrollbar-thumb {
+  background: #3d3d3d;
+}
+.summary::-webkit-scrollbar-button {
+  display: none !important;
+}
+@media (max-width: 576px) {
+  .summary {
+    max-height: 50vh !important;
+  }
+}

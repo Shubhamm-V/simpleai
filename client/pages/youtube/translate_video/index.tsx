@@ -14,7 +14,6 @@ import {
 import classes from './index.module.scss';
 import { TRANSLATE_LANGUAGES } from '@/constants/languages';
 import {
-  getSummary,
   getTexttoVoice,
   getTranslation,
   getVideoSubtitles,
@@ -35,7 +34,7 @@ type Translation = {
 };
 const TranslateVideo = (props: Props) => {
   const [url, setURL] = useState('');
-  const [summary, setSummary] = useState('');
+  const [translatedText, setTranslatedText] = useState('');
   const [loading, setLoading] = useState(false);
   const [saveLoading, setSaveLoading] = useState(false);
   const [language, setLanguage] = useState('en-US');
@@ -71,7 +70,6 @@ const TranslateVideo = (props: Props) => {
       setLoading(false);
       return;
     }
-    // const subtitles = await getSummary(subtitles);
 
     // translating subtitles
     let subtitleTranslation;
@@ -96,7 +94,7 @@ const TranslateVideo = (props: Props) => {
         translation: subtitleTranslation,
       });
       console.log('Audio : ', audio);
-      setSummary(subtitleTranslation);
+      setTranslatedText(subtitleTranslation);
       setLoading(false);
     } catch (error) {
       openNotification({ type: 'error', message: 'Something went wrong' });
@@ -179,7 +177,7 @@ const TranslateVideo = (props: Props) => {
       </Col>
       <Col span={24}>
         <Card className={classes.summaryCard}>
-          {summary ? (
+          {translatedText ? (
             <Fragment>
               <Col span={24} className={classes.textHeader}>
                 <h3>Read</h3>
@@ -192,7 +190,7 @@ const TranslateVideo = (props: Props) => {
                   Save
                 </Button>
               </Col>
-              <div className={classes.summary}>{summary}</div>
+              <div className={classes.summary}>{translatedText}</div>
             </Fragment>
           ) : (
             <div className={classes.infoContainer}>

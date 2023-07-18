@@ -2,6 +2,7 @@ import {
   UserOutlined,
   YoutubeOutlined,
   InstagramOutlined,
+  BookOutlined,
 } from '@ant-design/icons';
 
 export const SIDE_MENU_ITEMS = [
@@ -40,5 +41,10 @@ export const SIDE_MENU_ITEMS = [
         title: 'Generate Hashtags',
       },
     ],
+  },
+  {
+    key: 'ai_summarizar',
+    icon: <BookOutlined />,
+    title: 'AI Summarizer',
   },
 ];

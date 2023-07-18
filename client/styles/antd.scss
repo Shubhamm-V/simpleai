@@ -170,3 +170,58 @@
 .ant-upload-wrapper .ant-upload-list .ant-upload-list-item {
   height: 0 !important;
 }
+
+.ant-upload-wrapper
+  .ant-upload-list
+  .ant-upload-list-item
+  .ant-upload-list-item-actions
+  .ant-upload-list-item-action.ant-btn-sm {
+  display: none !important;
+}
+
+.ant-tabs {
+  padding-inline: 1rem !important;
+}
+
+.ant-tabs .ant-tabs-tab-btn {
+  color: var(--sub-primary-color) !important;
+}
+
+.ant-tabs > .ant-tabs-nav .ant-tabs-nav-wrap {
+  border-bottom: 1px solid #292b31 !important;
+}
+
+@media (max-width: 576px) {
+  .ant-tabs {
+    padding-inline: 0.7rem !important;
+  }
+}
+
+textarea:where(.css-dev-only-do-not-override-1jcc8qg).ant-input {
+  color: var(--sub-primary-color) !important;
+  border-color: var(--subtheme-color) !important;
+  background-color: #262934 !important;
+  height: 45vh !important;
+  resize: vertical !important;
+}
+
+textarea:where(
+    .css-dev-only-do-not-override-1jcc8qg
+  ).ant-input::-webkit-scrollbar {
+  width: 0.5rem;
+}
+textarea:where(
+    .css-dev-only-do-not-override-1jcc8qg
+  ).ant-input::-webkit-scrollbar-track-piece {
+  background: #2d2a2a;
+}
+textarea:where(
+    .css-dev-only-do-not-override-1jcc8qg
+  ).ant-input::-webkit-scrollbar-thumb {
+  background: #3e3b3b;
+}
+textarea:where(
+    .css-dev-only-do-not-override-1jcc8qg
+  ).ant-input::-webkit-scrollbar-button {
+  display: none !important;
+}

@@ -36,7 +36,7 @@ export const getVideoSubtitles = async (url: string) => {
   return subtitles;
 };
 
-export const getSummary = async (text: string) => {
+export const getSummaryByText = async (text: string) => {
   const options = {
     method: 'POST',
     url: process.env.SUMMARY_API,
@@ -46,10 +46,11 @@ export const getSummary = async (text: string) => {
       'X-RapidAPI-Host': process.env.SUMMARY_HOST,
     },
     data: {
-      input: text,
+      text,
+      num_sentences: 5,
     },
   };
-  const response = (await axios.request(options)).data.output[0].text;
+  const response = (await axios.request(options)).data.summary;
   return response;
 };
 
