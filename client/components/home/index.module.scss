@@ -1,5 +1,5 @@
 .banner {
-  height: 92vh !important;
+  height: 90vh !important;
   color: var(--sub-primary-color);
   background-color: var(--theme-color);
   display: grid !important;
@@ -14,6 +14,7 @@
   h1 {
     font-size: 3rem !important;
     line-height: 3.5rem;
+    text-align: center !important;
     margin: 0;
     .title {
       color: var(--primary-color) !important;
@@ -23,19 +24,11 @@
     line-height: 1.9rem;
     font-size: 1.4rem;
     margin: 1.5rem 0 !important;
-    text-align: center !important;
+    text-align: center;
     padding-inline: 3rem !important;
   }
 }
-.bannerImage {
-  display: grid !important;
-  place-items: center !important;
-  img {
-    width: 100%;
-    height: 70% !important;
-    margin-right: -4rem !important;
-  }
-}
+
 .featureButton,
 .learnMoreButton {
   font-weight: bold;
@@ -69,7 +62,6 @@
 
 .buttonContainer {
   margin-top: 0.5rem;
-  width: 22vw;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -77,26 +69,21 @@
 
 @media (max-width: 850px) {
   .banner {
-    height: 110% !important;
     padding-bottom: 2.5rem !important;
-  }
-  .buttonContainer {
-    width: 30vw;
-  }
-  .bannerImage {
-    display: flex !important;
-    align-items: flex-start !important;
-    margin-top: 3rem;
   }
 }
 
 @media (max-width: 576px) {
+  .banner {
+    height: 110% !important;
+  }
   .info {
     align-items: flex-start !important;
     justify-content: flex-start !important;
 
     h1 {
-      font-size: 1.6rem !important;
+      font-size: 2rem !important;
+      text-align: left !important;
       word-wrap: break-word !important;
     }
     h2 {
@@ -104,15 +91,19 @@
     }
     p {
       line-height: 1.4rem;
-      font-size: 0.8rem;
-      text-align: left;
+      font-size: 0.9rem;
+      // text-align: left;
       padding-inline: 0 !important;
     }
   }
-  \ .bannerImage {
-    img {
-      height: 90% !important;
-    }
+  .featureContainer {
+    justify-content: center !important;
+  }
+
+  .buttonContainer {
+    width: 95% !important;
+    flex-wrap: wrap !important;
+    margin-inline: auto !important;
   }
 }
 
@@ -120,17 +111,6 @@
   .info {
     h1 {
       font-size: 1.6rem !important;
-    }
-  }
-}
-
-@media (max-width: 576px) {
-  .featureContainer {
-    justify-content: center !important;
-  }
-  .bannerImage {
-    img {
-      display: none !important;
     }
   }
 }
