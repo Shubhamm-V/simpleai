@@ -57,6 +57,15 @@
   }
   .urlButton {
     position: absolute !important;
-    top: -0.5rem !important;
+    top: -0.1rem !important;
+  }
+  .noURL {
+    h1 {
+      font-size: 1.3rem !important;
+      margin-block: 0.5rem;
+    }
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
   }
 }

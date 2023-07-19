@@ -22,7 +22,7 @@ export const TRANSLATION_STEPS = [
 export const SUMMARIZE_STEPS = [
   {
     id: 1,
-    text: '1.  Open article which wanna summarize in browser',
+    text: '1.  Open article which you waan to summarize in browser',
   },
   {
     id: 2,
