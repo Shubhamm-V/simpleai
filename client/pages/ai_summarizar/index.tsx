@@ -2,6 +2,7 @@ import React from 'react';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import SummarizeByText from './SummarizeByText';
+import SummarizeByUrl from './SummarizeByUrl';
 
 const onChange = (key: string) => {
   console.log(key);
@@ -10,13 +11,13 @@ const onChange = (key: string) => {
 const items: TabsProps['items'] = [
   {
     key: '1',
-    label: `Summarize Using Text`,
-    children: <SummarizeByText />,
+    label: `Summarize Using URL`,
+    children: <SummarizeByUrl />,
   },
   {
     key: '2',
-    label: `Summarize Using URL`,
-    children: `Summarize Using URL`,
+    label: `Summarize Using Text`,
+    children: <SummarizeByText />,
   },
 ];
 

@@ -197,14 +197,6 @@
   }
 }
 
-textarea:where(.css-dev-only-do-not-override-1jcc8qg).ant-input {
-  color: var(--sub-primary-color) !important;
-  border-color: var(--subtheme-color) !important;
-  background-color: #262934 !important;
-  height: 45vh !important;
-  resize: vertical !important;
-}
-
 textarea:where(
     .css-dev-only-do-not-override-1jcc8qg
   ).ant-input::-webkit-scrollbar {

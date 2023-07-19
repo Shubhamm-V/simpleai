@@ -19,6 +19,21 @@ export const TRANSLATION_STEPS = [
   },
 ];
 
+export const SUMMARIZE_STEPS = [
+  {
+    id: 1,
+    text: '1.  Open article which wanna summarize in browser',
+  },
+  {
+    id: 2,
+    text: '2.  Copy link of the article and paste it in above input box',
+  },
+  {
+    id: 2,
+    text: '3.  Click on Summarize and your key points will be ready.',
+  },
+];
+
 export const STEPS = [
   {
     title: 'AI Video Translation',

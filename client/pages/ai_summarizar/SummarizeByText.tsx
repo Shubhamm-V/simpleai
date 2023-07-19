@@ -11,17 +11,17 @@ const SummarizeByText = (props: Props) => {
   const [summaryPoints, setSummaryPoints] = useState([]);
   const onFinish = (values: any) => {
     const getSummary = async () => {
-      const summary = await getSummaryByText(values.text);
-      setSummaryPoints(summary);
+      setLoading(true);
+      try {
+        const summary = await getSummaryByText(values.text, 'text');
+        setSummaryPoints(summary);
+        setLoading(false);
+      } catch (err) {
+        openNotification({ type: 'error', message: 'Something went wrong' });
+        setLoading(false);
+      }
     };
-    setLoading(true);
-    try {
-      getSummary();
-      setLoading(false);
-    } catch (err) {
-      openNotification({ type: 'error', message: 'Something went wrong' });
-      setLoading(false);
-    }
+    getSummary();
   };
   return (
     <Fragment>
@@ -31,7 +31,11 @@ const SummarizeByText = (props: Props) => {
           name="text"
           rules={[{ required: true, message: 'Please enter some text' }]}
         >
-          <TextArea rows={20} placeholder="Enter text here to summarize" />
+          <TextArea
+            rows={20}
+            placeholder="Enter text here to summarize"
+            className={classes.textArea}
+          />
         </Form.Item>
         <Form.Item>
           <Button type="primary" htmlType="submit" loading={loading}>

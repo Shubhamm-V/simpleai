@@ -36,19 +36,30 @@ export const getVideoSubtitles = async (url: string) => {
   return subtitles;
 };
 
-export const getSummaryByText = async (text: string) => {
+export const getSummaryByText = async (text: string, type: string) => {
+  const endPoint = type === 'text' ? 'summarize-text' : 'summarize-url';
+
+  const data =
+    type == 'text'
+      ? {
+          text,
+          num_sentences: 5,
+        }
+      : {
+          url: text,
+          num_sentences: 5,
+          is_detailed: false,
+        };
+
   const options = {
     method: 'POST',
-    url: process.env.SUMMARY_API,
+    url: `${process.env.SUMMARY_API}/${endPoint}/`,
     headers: {
       'content-type': 'application/json',
       'X-RapidAPI-Key': process.env.RAPID_API_KEY,
       'X-RapidAPI-Host': process.env.SUMMARY_HOST,
     },
-    data: {
-      text,
-      num_sentences: 5,
-    },
+    data,
   };
   const response = (await axios.request(options)).data.summary;
   return response;
