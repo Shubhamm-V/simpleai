@@ -2,21 +2,40 @@ import { Button, Col, Form, Input, Row, Empty, Spin } from 'antd';
 import { Configuration, OpenAIApi } from 'openai';
 import React, { useState } from 'react';
 import classes from './index.module.scss';
+import openNotification from '@/components/utils/Notification';
 const GenerateAIImage = () => {
   const [loading, setLoading] = useState(false);
+  const [image, setImage] = useState('');
+
   const onFinish = (values: { prompt: string }) => {
     const getImage = async () => {
       const configuration = new Configuration({
         apiKey: process.env.OPENAI_API_KEY,
       });
       const openai = new OpenAIApi(configuration);
-      const response = await openai.createImage({
-        prompt: values.prompt,
-        n: 1,
-        size: '256x256',
-      });
+      setLoading(true);
+      try {
+        const response = await openai.createImage({
+          prompt: values.prompt,
+          n: 1,
+          size: '512x512',
+        });
+        console.log('response : ', response);
+        const image_url: any = response.data.data[0].url;
+        setImage(image_url);
+        setLoading(false);
+      } catch (err: any) {
+        console.log('Error : ', err.response.code);
+        openNotification({
+          type: 'error',
+          message: 'Prompt violating content policy',
+        });
+        setLoading(false);
+      }
     };
+    getImage();
   };
+
   return (
     <Row>
       <Col span={24} className={classes.header}>
@@ -56,16 +75,13 @@ const GenerateAIImage = () => {
         </Form>
       </Col>
       <Col span={23} className={classes.imageContainer}>
-        {/* <Spin className={classes.spin} size="large" tip="Generating Image" /> */}
-
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_pkM_rS8KU4a6VtRNXTukSpfCCtodto1ww&usqp=CAU" />
+        {loading && (
+          <Spin className={classes.spin} size="large" tip="Generating Image" />
+        )}
+        <img src={image || '/images/utilis/ai-image.png'} />
         {/* <Empty className={classes.empty} description="No image" /> */}
         <Button className={`link ${classes.download}`} type="link">
-          <a
-            download="custom-filename.jpg"
-            href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSk_pkM_rS8KU4a6VtRNXTukSpfCCtodto1ww&usqp=CAU"
-            title="ImageName"
-          >
+          <a download="ai-image.jpg" href={image} title="ImageName">
             Download
           </a>
         </Button>

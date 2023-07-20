@@ -26,7 +26,7 @@
 
 .imageContainer {
   height: 80vh !important;
-  padding-block: 2.4rem !important;
+  padding-block: 1rem !important;
   display: flex !important;
   margin-inline: auto !important  ;
   border: 1px solid #474b57 !important;
@@ -50,6 +50,10 @@
 }
 
 @media (max-width: 576px) {
+  .imageContainer {
+    padding-block: 2rem !important;
+    height: 60vh !important;
+  }
   .promptForm {
     padding-block: 1rem !important;
     padding-inline: 0.5rem !important;

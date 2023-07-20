@@ -14,6 +14,7 @@ const nextConfig = {
     TEXT_TO_SPEECH_KEY: process.env.TEXT_TO_SPEECH_KEY,
     HASHTAG_API: process.env.HASHTAG_API,
     HASHTAG_HOST: process.env.HASHTAG_HOST,
+    OPENAI_API_KEY: process.env.OPENAI_API_KEY,
   },
 };
 

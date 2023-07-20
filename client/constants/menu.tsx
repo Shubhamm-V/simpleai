@@ -20,10 +20,6 @@ export const SIDE_MENU_ITEMS = [
         key: 'translate_video',
         title: 'AI Translation',
       },
-      {
-        key: 'ai_description',
-        title: 'AI Description',
-      },
     ],
   },
 
@@ -33,12 +29,12 @@ export const SIDE_MENU_ITEMS = [
     title: 'Social Media',
     children: [
       {
-        key: 'generate_ai_image',
-        title: 'AI Image Generator',
-      },
-      {
         key: 'generate_hashtags',
         title: 'Generate Hashtags',
+      },
+      {
+        key: 'generate_ai_image',
+        title: 'AI Image Generator',
       },
     ],
   },

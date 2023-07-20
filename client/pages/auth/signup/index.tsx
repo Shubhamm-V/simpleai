@@ -32,8 +32,14 @@ const SignupForm: React.FC = (props: Props) => {
       openNotification({ type: 'success', message: 'Signup Successful' });
       router.push('/dashboard');
       console.log('Response:', response);
-    } catch (error) {
-      openNotification({ type: 'error', message: 'Something went wrong' });
+    } catch (error: any) {
+      const message = error.response.data.message;
+      if (message.startsWith('User validation failed: confirmPassword'))
+        openNotification({
+          type: 'error',
+          message: "Password and confirm password doesn't match",
+        });
+      else openNotification({ type: 'error', message: 'Something went wrong' });
       setIsLoading(false);
     }
   };

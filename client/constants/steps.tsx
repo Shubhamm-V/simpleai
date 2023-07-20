@@ -42,14 +42,8 @@ export const STEPS = [
     icon: <YoutubeFilled className="featureIcons" />,
   },
   {
-    title: 'AI Hashtags Generator',
+    title: 'AI Hashtags',
     description: 'Generate most trending hashtags by uploading your image',
-    icon: <InstagramFilled className="featureIcons" />,
-  },
-  {
-    title: 'AI Post Generator',
-    description:
-      'Generate any social media post by adding prompt for the image',
     icon: <InstagramFilled className="featureIcons" />,
   },
   {
@@ -57,5 +51,11 @@ export const STEPS = [
     description:
       'Convert your large articles/text into 4-5 lines of summarized text',
     icon: <BookFilled className="featureIcons" />,
+  },
+  {
+    title: 'AI Post Generator',
+    description:
+      'Generate any social media post by adding prompt for the image',
+    icon: <InstagramFilled className="featureIcons" />,
   },
 ];

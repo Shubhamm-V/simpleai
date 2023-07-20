@@ -10,7 +10,7 @@ const Banner = () => {
       <div className={`${classes.banner}`}>
         <Row className={classes.content}>
           <Col span={18} sm={18} xs={24} className={classes.info}>
-            <h2>AI SIMPLIFIER</h2>
+            {/* <h2>AI SIMPLIFIER</h2> */}
             <h1>
               Simplify&nbsp;
               <span className={classes.title}>
