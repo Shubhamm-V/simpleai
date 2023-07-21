@@ -25,6 +25,7 @@ const Login = (props: Props) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [renderCount, setRenderCount] = useState(0);
 
   const onFinish = async (values: any) => {
     setIsLoading(true);
@@ -45,7 +46,7 @@ const Login = (props: Props) => {
   useEffect(() => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
-      if (provider === 'google') {
+      if (provider === 'google' && renderCount == 1) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -53,7 +54,7 @@ const Login = (props: Props) => {
             sessionStorage.clear();
           }
         });
-      } else if (provider === 'facebook') {
+      } else if (provider === 'facebook' && renderCount == 1) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -62,6 +63,7 @@ const Login = (props: Props) => {
           }
         });
       }
+      setRenderCount(1);
     }
   }, [session]);
 

@@ -4,7 +4,7 @@ import { Form, Button, Input, Card } from 'antd';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
 import { getSummaryByText } from '@/components/utils/youtube-apis/apis';
-import { SUMMARIZE_STEPS } from '@/constants/steps';
+import { SUMMARIZE_STEPS } from '@/constants/utils';
 import Paragraph from '@/components/text/Paragraph';
 
 type Props = {};

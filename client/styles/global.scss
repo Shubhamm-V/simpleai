@@ -89,10 +89,14 @@ input:-webkit-autofill:active {
 .featureIcons {
   font-size: 2rem !important;
 }
+.dashFeatureIcon {
+  font-size: 2rem !important;
+  margin-bottom: 0.5rem !important;
+}
 
-@media (max-width: 1200px) {
-  .container {
-    max-width: 81vw;
+@media (max-width: 576px) {
+  .dashFeatureIcon {
+    font-size: 1.5rem !important;
   }
 }
 

@@ -1,4 +1,4 @@
-import { STEPS } from '@/constants/steps';
+import { FEATURES } from '@/constants/utils';
 import { YoutubeFilled } from '@ant-design/icons';
 import { Col, Row, Card } from 'antd';
 import classes from './index.module.scss';
@@ -10,7 +10,7 @@ const Features = (props: Props) => {
   return (
     <div>
       <Row className={classes.featureContainer}>
-        {STEPS.map(
+        {FEATURES.map(
           (
             features: { title: string; description: string; icon: any },
             ind

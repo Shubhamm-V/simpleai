@@ -11,7 +11,7 @@ export const loginWithGoogleFB = async (session: any, loginType: string) => {
       loginType,
     });
     if (res) {
-      openNotification({ type: 'success', message: 'Login successful' });
+      openNotification({ type: 'success', message: 'You are logged in' });
       return res;
     }
   } catch (error: any) {

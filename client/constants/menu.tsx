@@ -1,14 +1,14 @@
 import {
-  UserOutlined,
   YoutubeOutlined,
   InstagramOutlined,
   BookOutlined,
+  AppstoreOutlined,
 } from '@ant-design/icons';
 
 export const SIDE_MENU_ITEMS = [
   {
     key: 'dashboard',
-    icon: <UserOutlined />,
+    icon: <AppstoreOutlined />,
     title: 'Dashboard',
   },
   {

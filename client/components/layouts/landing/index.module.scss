@@ -10,7 +10,15 @@
     color: var(--sub-primary-color);
   }
 }
-
+.footer {
+  padding-top: 3rem !important;
+  padding-bottom: 2rem !important;
+  display: flex !important;
+  justify-content: center !important;
+  p {
+    color: var(--sub-primary-color) !important;
+  }
+}
 .exploreButton {
   height: 2.8rem !important;
 }

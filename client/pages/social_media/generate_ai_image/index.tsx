@@ -80,11 +80,13 @@ const GenerateAIImage = () => {
         )}
         <img src={image || '/images/utilis/ai-image.png'} />
         {/* <Empty className={classes.empty} description="No image" /> */}
-        <Button className={`link ${classes.download}`} type="link">
-          <a download="ai-image.jpg" href={image} title="ImageName">
-            Download
-          </a>
-        </Button>
+        {image && (
+          <Button className={`link ${classes.download}`} type="link">
+            <a download="ai-image.jpg" href={image} title="ImageName">
+              Download
+            </a>
+          </Button>
+        )}
       </Col>
     </Row>
   );

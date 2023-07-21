@@ -49,7 +49,7 @@ const userSchema = new mongoose.Schema({
   ],
   loginType: {
     type: String,
-    enum: ['email', 'google'],
+    enum: ['email', 'google', 'facebook'],
     default: 'email',
   },
   passwordChangeAt: Date,

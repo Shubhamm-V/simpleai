@@ -11,6 +11,8 @@ import {
   LogoutOutlined,
 } from '@ant-design/icons';
 import Link from 'next/link';
+import { signOut } from 'next-auth/react';
+import { useRouter } from 'next/router';
 
 const { Header, Sider, Content } = Layout;
 const { SubMenu } = Menu;
@@ -22,6 +24,7 @@ const Sidebar = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState(1300);
   const [screenLoad, setScreenLoad] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
+  const router = useRouter();
   const userInfo = useSelector((state: any) => state.userReducer.user);
   const user = userInfo.data.user;
   useEffect(() => {
@@ -41,6 +44,10 @@ const Sidebar = (props: Props) => {
 
   const toggleSidebar = () => {
     setCollapsed(!collapsed);
+  };
+
+  const handleLogout = async () => {
+    await signOut({ callbackUrl: '/auth/login' });
   };
 
   return (
@@ -71,7 +78,14 @@ const Sidebar = (props: Props) => {
                 return (
                   <SubMenu key={item.key} icon={item.icon} title={item.title}>
                     {item.children.map((subItem) => (
-                      <Menu.Item key={subItem.key} className={classes.subMenu}>
+                      <Menu.Item
+                        key={subItem.key}
+                        className={classes.subMenu}
+                        onClick={() => {
+                          setShowSidebar(false);
+                          toggleSidebar();
+                        }}
+                      >
                         <Link href={`/${item.key}/${subItem.key}`}>
                           {subItem.title}
                         </Link>
@@ -82,7 +96,14 @@ const Sidebar = (props: Props) => {
               }
 
               return (
-                <Menu.Item key={item.key} icon={item.icon}>
+                <Menu.Item
+                  key={item.key}
+                  icon={item.icon}
+                  onClick={() => {
+                    setShowSidebar(false);
+                    toggleSidebar();
+                  }}
+                >
                   <Link href={`/${item.key}/`}>{item.title}</Link>
                 </Menu.Item>
               );
@@ -110,14 +131,20 @@ const Sidebar = (props: Props) => {
                 icon={<MenuFoldOutlined />}
               />
             )}
-            <div className="profile">
+            <div>
               {/* Profile section content */}
               <Avatar
                 size="small"
                 src={user.profileImage}
                 icon={<UserOutlined />}
               />
-              <span style={{ marginLeft: 8 }}>{user.name}</span>
+              <span style={{ marginLeft: 8, marginRight: '0.5rem' }}>
+                {user.name}
+              </span>
+              <LogoutOutlined
+                style={{ cursor: 'pointer' }}
+                onClick={handleLogout}
+              />
             </div>
           </Header>
         </Affix>

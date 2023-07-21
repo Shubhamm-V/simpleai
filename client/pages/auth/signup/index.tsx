@@ -2,13 +2,13 @@ import React, { useState, useEffect } from 'react';
 import classes from './index.module.scss';
 import { Col, Row, Form, Input, Button, Divider } from 'antd';
 import { FacebookOutlined, GoogleOutlined } from '@ant-design/icons';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { signIn, useSession } from 'next-auth/react';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 import Link from 'next/link';
 import openNotification from '@/components/utils/Notification';
 import { loginWithGoogleFB } from '@/pages/api/auth/google-facebook-login';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '@/redux/reducers/userReducer';
 import URL from '@/constants/url';
 type Props = {};
@@ -19,6 +19,9 @@ const SignupForm: React.FC = (props: Props) => {
   const { data: session } = useSession();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
+  const [renderCount, setRenderCount] = useState(0);
+
+  let temp = 0;
 
   // Sign UP
   const onFinish = async (values: any) => {
@@ -51,15 +54,16 @@ const SignupForm: React.FC = (props: Props) => {
   useEffect(() => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
-      if (provider === 'google') {
+      if (provider === 'google' && renderCount == 1) {
         loginWithGoogleFB(session, provider).then((res) => {
-          if (res) {
+          if (res && temp == 0) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
             sessionStorage.clear();
+            temp = 1;
           }
         });
-      } else if (provider === 'facebook') {
+      } else if (provider === 'facebook' && renderCount == 1) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -68,6 +72,7 @@ const SignupForm: React.FC = (props: Props) => {
           }
         });
       }
+      setRenderCount(1);
     }
   }, [session]);
 

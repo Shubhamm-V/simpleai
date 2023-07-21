@@ -18,7 +18,7 @@ import {
   getTranslation,
   getVideoSubtitles,
 } from '../../../components/utils/youtube-apis/apis';
-import { TRANSLATION_STEPS } from '@/constants/steps';
+import { TRANSLATION_STEPS } from '@/constants/utils';
 import Paragraph from '@/components/text/Paragraph';
 import { SaveOutlined } from '@ant-design/icons';
 import axios from 'axios';
