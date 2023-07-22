@@ -1,9 +1,10 @@
 import { Button, Row, Tag, Upload } from 'antd';
 import classes from './index.module.scss';
 import { CopyOutlined, UploadOutlined } from '@ant-design/icons';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { getHashTags } from '@/components/utils/social-apis/apis';
 import openNotification from '@/components/utils/Notification';
+import { Helmet } from 'react-helmet';
 
 var substrings = [
   'data:image/jpeg;base64,',
@@ -69,65 +70,73 @@ const UploadDetails = () => {
     }
   };
   return (
-    <div className={classes.imageScreen}>
-      <h1> AI Hashtags Generator</h1>
-      <Row style={{ marginBottom: '1rem' }} className={classes.imageContainer}>
-        <img
-          src={userImage || '/images/utilis/Image-upload.png'}
-          alt="profile"
-          className={classes.image}
-        />
-        <div className={classes.uploadContainer}>
-          <h3>Upload Image</h3>
-          <p>Your path should be in PNG or JPG format</p>
-          <div className={classes.hashtagButtons}>
-            <Upload
-              onChange={handleImage}
-              accept=".jpg, .jpeg, .png"
-              maxCount={1}
-            >
-              <Button
-                type="default"
-                className={classes.uploadButton}
-                icon={<UploadOutlined />}
+    <Fragment>
+      <Helmet>
+        <title>AI Hashtags Generator</title>
+      </Helmet>
+      <div className={classes.imageScreen}>
+        <h1> AI Hashtags Generator</h1>
+        <Row
+          style={{ marginBottom: '1rem' }}
+          className={classes.imageContainer}
+        >
+          <img
+            src={userImage || '/images/utilis/Image-upload.png'}
+            alt="profile"
+            className={classes.image}
+          />
+          <div className={classes.uploadContainer}>
+            <h3>Upload Image</h3>
+            <p>Your path should be in PNG or JPG format</p>
+            <div className={classes.hashtagButtons}>
+              <Upload
+                onChange={handleImage}
+                accept=".jpg, .jpeg, .png"
+                maxCount={1}
               >
-                Click to upload
-              </Button>
-            </Upload>
-            {userImage && (
-              <Button
-                type="primary"
-                onClick={generateHashtags}
-                loading={loading}
-                className={classes.hashButton}
-              >
-                Generate Hashtags
-              </Button>
-            )}
-          </div>
-          {hashtags.length > 0 && (
-            <div style={{ marginTop: '2rem' }}>
-              <div className={classes.hashtagHeader}>
-                <h2>HASHTAGS</h2>
-                <h3 onClick={copyHashtags} style={{ cursor: 'pointer' }}>
-                  <CopyOutlined className={classes.copyIcon} />
-                  {isCopied ? 'Copied' : 'Copy'}
-                </h3>
-              </div>
-              <div className={classes.hashtagContainer}>
-                <div className={classes.hashTags}>
-                  {hashtags?.map((val, ind) => (
-                    <Tag key={ind} color="cyan" className={classes.tag}>
-                      #{val}
-                    </Tag>
-                  ))}
+                <Button
+                  type="default"
+                  className={classes.uploadButton}
+                  icon={<UploadOutlined />}
+                >
+                  Click to upload
+                </Button>
+              </Upload>
+              {userImage && (
+                <Button
+                  type="primary"
+                  onClick={generateHashtags}
+                  loading={loading}
+                  className={classes.hashButton}
+                >
+                  Generate Hashtags
+                </Button>
+              )}
+            </div>
+            {hashtags.length > 0 && (
+              <div style={{ marginTop: '2rem' }}>
+                <div className={classes.hashtagHeader}>
+                  <h2>HASHTAGS</h2>
+                  <h3 onClick={copyHashtags} style={{ cursor: 'pointer' }}>
+                    <CopyOutlined className={classes.copyIcon} />
+                    {isCopied ? 'Copied' : 'Copy'}
+                  </h3>
+                </div>
+                <div className={classes.hashtagContainer}>
+                  <div className={classes.hashTags}>
+                    {hashtags?.map((val, ind) => (
+                      <Tag key={ind} color="cyan" className={classes.tag}>
+                        #{val}
+                      </Tag>
+                    ))}
+                  </div>
                 </div>
               </div>
-            </div>
-          )}
-        </div>
-      </Row>
-    </div>
+            )}
+          </div>
+        </Row>
+      </div>
+    </Fragment>
   );
 };
 export default UploadDetails;

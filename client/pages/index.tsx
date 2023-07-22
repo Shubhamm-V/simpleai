@@ -1,7 +1,15 @@
 import Home from '@/components/home/Home';
-import React from 'react';
+import { Helmet } from 'react-helmet';
+import React, { Fragment } from 'react';
 const index: React.FC = () => {
-  return <Home />;
+  return (
+    <Fragment>
+      <Helmet>
+        <title>SimpleAI</title>
+      </Helmet>
+      <Home />
+    </Fragment>
+  );
 };
 
 export default index;

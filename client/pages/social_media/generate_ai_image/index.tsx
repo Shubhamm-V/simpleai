@@ -3,6 +3,7 @@ import { Configuration, OpenAIApi } from 'openai';
 import React, { useState } from 'react';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
+import { Helmet } from 'react-helmet';
 const GenerateAIImage = () => {
   const [loading, setLoading] = useState(false);
   const [image, setImage] = useState('');
@@ -38,6 +39,9 @@ const GenerateAIImage = () => {
 
   return (
     <Row>
+      <Helmet>
+        <title>AI Image Generator</title>
+      </Helmet>
       <Col span={24} className={classes.header}>
         <h1> Generate AI Image</h1>
       </Col>

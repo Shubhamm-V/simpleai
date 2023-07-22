@@ -10,4 +10,7 @@ export const IGONRE_WRAPPER_PAGES = [
   '/signup',
   '/auth/login',
   '/auth/signup',
+  '/auth/forgot-password',
+  '/auth/reset-password',
+  '/learn-more',
 ];

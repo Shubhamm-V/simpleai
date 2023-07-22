@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
 import SummarizeByText from './SummarizeByText';
 import SummarizeByUrl from './SummarizeByUrl';
+import { Helmet } from 'react-helmet';
 
 const onChange = (key: string) => {
   console.log(key);
@@ -22,7 +23,12 @@ const items: TabsProps['items'] = [
 ];
 
 const App: React.FC = () => (
-  <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+  <Fragment>
+    <Helmet>
+      <title>AI Summarizer</title>
+    </Helmet>
+    <Tabs defaultActiveKey="1" items={items} onChange={onChange} />
+  </Fragment>
 );
 
 export default App;

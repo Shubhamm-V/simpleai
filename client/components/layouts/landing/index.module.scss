@@ -24,6 +24,9 @@
 }
 
 @media (max-width: 576px) {
+  .footer {
+    padding-top: 2rem !important;
+  }
   .header {
     padding-inline: 2vw;
   }

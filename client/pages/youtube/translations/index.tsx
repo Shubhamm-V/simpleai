@@ -9,6 +9,7 @@ import { TRANSLATE_LANGUAGES } from '@/constants/languages';
 import classes from './index.module.scss';
 import Link from 'next/link';
 import { PlusOutlined } from '@ant-design/icons';
+import { Helmet } from 'react-helmet';
 type Props = {};
 
 const Translations = (props: Props) => {
@@ -106,6 +107,9 @@ const Translations = (props: Props) => {
   return (
     <div>
       <Row>
+        <Helmet>
+          <title>Translations</title>
+        </Helmet>
         <Col span={24} className={classes.headerWrapper}>
           <h2>Your Translations</h2>
           <Link href="/youtube/translate_video">

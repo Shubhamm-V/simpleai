@@ -1,0 +1,27 @@
+.forgotContainer {
+  height: 90vh !important;
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  h2 {
+    padding-block: 1.3rem !important;
+    font-size: 1.7rem !important;
+    color: var(--sub-primary-color) !important;
+    text-align: center !important;
+  }
+}
+
+.resetButton {
+  width: 100% !important;
+  margin-inline: auto !important;
+}
+
+@media (max-width: 576px) {
+  .forgotContainer {
+    height: 80vh !important;
+    h2 {
+      padding-block: 0.5rem !important;
+      font-size: 1.5rem !important;
+    }
+  }
+}

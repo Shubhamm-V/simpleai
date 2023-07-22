@@ -15,7 +15,7 @@ const FeatureCard = (props: Props) => {
     router.push(props.path);
   };
   return (
-    <Col span={18} md={9}>
+    <Col span={21} md={9}>
       <Card
         className={classes.card}
         bodyStyle={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}

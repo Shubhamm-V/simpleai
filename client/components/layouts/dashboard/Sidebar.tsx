@@ -83,7 +83,9 @@ const Sidebar = (props: Props) => {
                         className={classes.subMenu}
                         onClick={() => {
                           setShowSidebar(false);
-                          toggleSidebar();
+                          {
+                            windowWidth <= 1105 && toggleSidebar();
+                          }
                         }}
                       >
                         <Link href={`/${item.key}/${subItem.key}`}>
@@ -101,7 +103,9 @@ const Sidebar = (props: Props) => {
                   icon={item.icon}
                   onClick={() => {
                     setShowSidebar(false);
-                    toggleSidebar();
+                    {
+                      windowWidth <= 1105 && toggleSidebar();
+                    }
                   }}
                 >
                   <Link href={`/${item.key}/`}>{item.title}</Link>

@@ -16,6 +16,7 @@ import URL from '@/constants/url';
 import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
 import { loginActions } from '@/redux/reducers/userReducer';
+import { Helmet } from 'react-helmet';
 
 type Props = {};
 
@@ -46,7 +47,7 @@ const Login = (props: Props) => {
   useEffect(() => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
-      if (provider === 'google' && renderCount == 1) {
+      if (provider === 'google' && renderCount == 0) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -54,7 +55,7 @@ const Login = (props: Props) => {
             sessionStorage.clear();
           }
         });
-      } else if (provider === 'facebook' && renderCount == 1) {
+      } else if (provider === 'facebook' && renderCount == 0) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -78,6 +79,9 @@ const Login = (props: Props) => {
 
   return (
     <Row>
+      <Helmet>
+        <title>SimpleAI - Login</title>
+      </Helmet>
       <Col md={12}>
         <img
           className={classes.loginImage}
@@ -129,13 +133,14 @@ const Login = (props: Props) => {
               Log In
             </Button>
           </Form.Item>
-          <a
-            href=""
-            className={`link ${classes.forgotLink}`}
-            style={{ textAlign: 'right' }}
-          >
-            Forgot password?
-          </a>
+          <Link href="/auth/forgot-password">
+            <label
+              className={`link ${classes.forgotLink}`}
+              style={{ textAlign: 'right' }}
+            >
+              Forgot password?
+            </label>
+          </Link>
         </Form>
         <div className={classes.loginForm}>
           <Divider className={classes.loginDivider}>OR</Divider>

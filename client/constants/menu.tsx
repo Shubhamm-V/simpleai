@@ -18,7 +18,7 @@ export const SIDE_MENU_ITEMS = [
     children: [
       {
         key: 'translate_video',
-        title: 'AI Translation',
+        title: 'AI Video Translation',
       },
     ],
   },

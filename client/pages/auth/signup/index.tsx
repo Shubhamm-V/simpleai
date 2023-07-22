@@ -11,6 +11,7 @@ import { loginWithGoogleFB } from '@/pages/api/auth/google-facebook-login';
 import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '@/redux/reducers/userReducer';
 import URL from '@/constants/url';
+import { Helmet } from 'react-helmet';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
@@ -20,8 +21,6 @@ const SignupForm: React.FC = (props: Props) => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(false);
   const [renderCount, setRenderCount] = useState(0);
-
-  let temp = 0;
 
   // Sign UP
   const onFinish = async (values: any) => {
@@ -54,16 +53,15 @@ const SignupForm: React.FC = (props: Props) => {
   useEffect(() => {
     if (session) {
       const provider = sessionStorage.getItem('provider');
-      if (provider === 'google' && renderCount == 1) {
+      if (provider === 'google' && renderCount == 0) {
         loginWithGoogleFB(session, provider).then((res) => {
-          if (res && temp == 0) {
+          if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
             router.push('/dashboard');
             sessionStorage.clear();
-            temp = 1;
           }
         });
-      } else if (provider === 'facebook' && renderCount == 1) {
+      } else if (provider === 'facebook' && renderCount == 0) {
         loginWithGoogleFB(session, provider).then((res) => {
           if (res) {
             dispatch(loginActions.loginUser({ user: res.data }));
@@ -87,6 +85,9 @@ const SignupForm: React.FC = (props: Props) => {
 
   return (
     <Row>
+      <Helmet>
+        <title>SimpleAI - Sign Up</title>
+      </Helmet>
       <Col xs={24} md={13} lg={13} className={classes.signupContainer}>
         <Form
           name="signup-form"

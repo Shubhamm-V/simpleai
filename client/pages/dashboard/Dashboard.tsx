@@ -12,7 +12,7 @@ const Dashboard = (props: Props) => {
   console.log('User: ', user);
   return (
     <div className={classes.cardDiv}>
-      <h1> Available Tools</h1>
+      <h1> Available AI Tools</h1>
       <Row className={classes.cardContainer}>
         {DASH_FEATURES.map((feature: any, ind) => (
           <FeatureCard

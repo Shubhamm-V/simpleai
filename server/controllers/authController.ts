@@ -122,7 +122,7 @@ export const forgotPassword = createAsync(
   async (req: Request, res: Response, next: NextFunction) => {
     const user = await User.findOne({ email: req.body.email });
     if (!user)
-      return next(new AppError('User with current email does not exists', 401));
+      return next(new AppError('User with email does not exists', 401));
     const resetToken = user.createPasswordResetToken();
     await user.save({ validateBeforeSave: false });
 
@@ -131,7 +131,7 @@ export const forgotPassword = createAsync(
       'host'
     )}/api/v1/users/resetPassword/${resetToken}`;
 
-    const message = `Forgot your message, please click on followinglinke to reset password ${resetURL}`;
+    const message = `Forgot your message, please click on following linke to reset password ${resetURL}`;
 
     try {
       await sendEmail({

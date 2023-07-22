@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import Dashboard from './Dashboard';
+import { Helmet } from 'react-helmet';
 const index = () => {
-  return <Dashboard />;
+  return (
+    <Fragment>
+      <Helmet>
+        <title>Dashboard</title>
+      </Helmet>
+      <Dashboard />
+    </Fragment>
+  );
 };
 
 export default index;
