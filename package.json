@@ -13,9 +13,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@types/react-helmet": "^6.1.6",
-    "concurrently": "^8.2.0",
-    "react-helmet": "^6.1.0"
+    "concurrently": "^8.2.0"
   },
   "devDependencies": {
     "@types/node": "^20.3.1"
