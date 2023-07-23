@@ -57,8 +57,8 @@ Backend
   <li>
     Used redux persist, so don't won't be loose and user will stay logged in, even after refreshing page.
   </li>
+  <br/>
 </ul>
-<br/>
 <h2>Setup Instructions</h2>
 <h4>Clone Project </h4>
 <code>git clone https://github.com/Shubhamm-V/simpleai.git</code>
