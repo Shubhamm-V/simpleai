@@ -13,14 +13,14 @@ const Banner = () => {
           <Col span={18} sm={18} xs={24} className={classes.info}>
             {/* <h2>AI SIMPLIFIER</h2> */}
             <h1>
-              Simplify&nbsp;
+              Simplify <span>Use of</span>
               <span className={classes.title}>
                 ARTIFICIAL INTELLIGENCE
               </span>{' '}
             </h1>
             <p className={classes.detail}>
-              SimpleAI provides tools which improves your experience with AI and
-              save your damn time
+              SimpleAI provides various AI tools which improves your experience
+              with youtube, social media and browsers.
             </p>
             <div className={classes.buttonContainer}>
               {/* <Col span={16} sm={16} xs={24}>

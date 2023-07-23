@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { PersistGate } from 'redux-persist/integration/react';
 import store, { persistor } from '@/redux/store';
 import { Provider } from 'react-redux';
@@ -6,6 +6,7 @@ import { ConfigProvider } from 'antd';
 import { AppProps } from 'next/app';
 import '../styles/global.scss';
 import '../styles/antd.scss';
+import Head from 'next/head';
 import { SessionProvider } from 'next-auth/react';
 import { useRouter } from 'next/router';
 import { IGONRE_WRAPPER_PAGES } from '@/constants/url';
@@ -24,21 +25,26 @@ const MyApp: React.FC<AppProps> = ({
   const router = useRouter();
   const shouldRenderWrapper = !IGONRE_WRAPPER_PAGES.includes(router.pathname);
   return (
-    <ConfigProvider theme={antdTheme}>
-      <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <SessionProvider session={pageProps.session}>
-            {!shouldRenderWrapper ? (
-              <Component {...pageProps} />
-            ) : (
-              <DashLayout>
+    <Fragment>
+      <Head>
+        <link rel="icon" href="/images/logo.png" />
+      </Head>
+      <ConfigProvider theme={antdTheme}>
+        <Provider store={store}>
+          <PersistGate loading={null} persistor={persistor}>
+            <SessionProvider session={pageProps.session}>
+              {!shouldRenderWrapper ? (
                 <Component {...pageProps} />
-              </DashLayout>
-            )}
-          </SessionProvider>
-        </PersistGate>
-      </Provider>
-    </ConfigProvider>
+              ) : (
+                <DashLayout>
+                  <Component {...pageProps} />
+                </DashLayout>
+              )}
+            </SessionProvider>
+          </PersistGate>
+        </Provider>
+      </ConfigProvider>
+    </Fragment>
   );
 };
 

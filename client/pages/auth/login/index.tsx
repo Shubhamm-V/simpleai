@@ -17,6 +17,7 @@ import classes from './index.module.scss';
 import openNotification from '@/components/utils/Notification';
 import { loginActions } from '@/redux/reducers/userReducer';
 import { Helmet } from 'react-helmet';
+import { GUEST_LOGIN_DATA } from '@/components/utils/demoLogin';
 
 type Props = {};
 
@@ -35,11 +36,11 @@ const Login = (props: Props) => {
       dispatch(loginActions.loginUser({ user: response.data }));
 
       form.resetFields();
-      openNotification({ type: 'success', message: 'Login Successful' });
+      openNotification({ type: 'success', message: 'You are logged in' });
       router.push('/dashboard');
       console.log('Response:', response);
-    } catch (error) {
-      openNotification({ type: 'error', message: 'Something went wrong' });
+    } catch (err: any) {
+      openNotification({ type: 'error', message: err.response.data.message });
       setIsLoading(false);
     }
   };
@@ -77,6 +78,12 @@ const Login = (props: Props) => {
     await signIn('facebook');
   };
 
+  const handleGuestLogin = async () => {
+    form.setFieldValue('email', GUEST_LOGIN_DATA.email);
+    form.setFieldValue('password', GUEST_LOGIN_DATA.password);
+    await onFinish(GUEST_LOGIN_DATA);
+  };
+
   return (
     <Row>
       <Helmet>
@@ -99,12 +106,15 @@ const Login = (props: Props) => {
           // initialValues={{ remember: true }}
         >
           <h1 className={classes.loginHeader}>
-            Login with <span>SimpleAI</span>
+            Login with{' '}
+            <Link href="/">
+              <span>SimpleAI</span>
+            </Link>
           </h1>
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: 'Please enter your Username!' }]}
+            rules={[{ required: true, message: 'Please enter your Email' }]}
           >
             <Input
               prefix={<UserOutlined className="site-form-item-icon" />}
@@ -114,7 +124,7 @@ const Login = (props: Props) => {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please enter your Password!' }]}
+            rules={[{ required: true, message: 'Please enter your Password' }]}
           >
             <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
@@ -179,6 +189,16 @@ const Login = (props: Props) => {
             </Link>
           </p>
         </div>
+        <div className="guestLogin" onClick={handleGuestLogin}>
+          <p>
+            <span className="link">Login as a Guest</span>
+          </p>
+        </div>
+        {isLoading && (
+          <p style={{ color: '#f1f1f1' }}>
+            Login my take upto 1 min as I using free hosting service
+          </p>
+        )}
       </Col>
     </Row>
   );

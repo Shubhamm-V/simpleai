@@ -21,7 +21,7 @@ export const TRANSLATION_STEPS = [
   },
   {
     id: 4,
-    text: ' 4.  It may take up to 20 Sec to 1 Min to generate audio with your required language',
+    text: ' 4.  It may from 5 Sec to 1 Min to generate audio with your required language',
   },
 ];
 

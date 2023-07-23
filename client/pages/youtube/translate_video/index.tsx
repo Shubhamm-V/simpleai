@@ -52,6 +52,11 @@ const TranslateVideo = (props: Props) => {
   const [form] = Form.useForm();
 
   const translateVideo = async () => {
+    if (!url) {
+      openNotification({ type: 'info', message: 'Please enter url first' });
+      return;
+    }
+
     setLoading(true);
 
     // getting subtitles
@@ -129,7 +134,7 @@ const TranslateVideo = (props: Props) => {
     } catch (error) {
       openNotification({
         type: 'error',
-        message: 'SOmething went wrong',
+        message: 'Something went wrong',
       });
       setSaveLoading(false);
     }

@@ -1,9 +1,21 @@
 .logoContainer {
-  display: flex;
-  font-size: 1.4rem;
-  padding-left: 0.5rem;
-  justify-content: space-between;
-  color: var(--sub-primary-color);
+  display: flex !important;
+  justify-content: space-between !important;
+  margin-bottom: -1.2rem !important;
+}
+.logoWrapper {
+  margin-top: 0.3rem !important;
+  display: flex !important;
+  padding: 1rem !important;
+  img {
+    height: 2rem !important;
+  }
+  h2 {
+    font-size: 1.6rem !important;
+    margin-top: 0.5rem !important;
+    margin-left: -0.3rem !important;
+    color: var(--sub-primary-color) !important;
+  }
 }
 
 .header {
@@ -54,7 +66,8 @@
 
 @media (max-width: 1106px) {
   .close {
-    padding: 1rem;
+    padding-inline: 1rem !important;
+    margin-bottom: 0.7rem !important;
     font-size: 1.2rem;
     display: flex !important;
   }

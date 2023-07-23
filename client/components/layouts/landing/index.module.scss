@@ -6,9 +6,19 @@
   align-items: center !important;
   position: sticky !important;
   z-index: 999 !important;
+}
+.logoWrapper {
+  display: flex !important;
+  margin-top: 0.3rem !important;
   h2 {
-    color: var(--sub-primary-color);
+    margin-top: 0.5rem !important;
+    margin-left: -0.3rem !important;
+    color: var(--sub-primary-color) !important;
   }
+}
+.logo {
+  height: 2rem !important ;
+  width: auto !important;
 }
 .footer {
   padding-top: 3rem !important;

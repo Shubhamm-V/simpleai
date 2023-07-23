@@ -44,6 +44,17 @@ html {
   color: #24ba92 !important;
 }
 
+.guestLogin {
+  cursor: pointer !important;
+  width: 52% !important;
+  text-align: center !important;
+  border-radius: 0.5rem !important  ;
+  border: 1px solid #292d36 !important;
+  margin-top: -1rem !important;
+}
+.guestLogin:hover {
+  scale: 1.03;
+}
 .w-100 {
   width: 100% !important;
 }
@@ -101,6 +112,9 @@ input:-webkit-autofill:active {
 @media (max-width: 576px) {
   .dashFeatureIcon {
     font-size: 1.5rem !important;
+  }
+  .guestLogin {
+    width: 90% !important;
   }
 }
 

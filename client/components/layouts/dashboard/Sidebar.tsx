@@ -24,7 +24,6 @@ const Sidebar = (props: Props) => {
   const [windowWidth, setWindowWidth] = useState(1300);
   const [screenLoad, setScreenLoad] = useState(false);
   const [showSidebar, setShowSidebar] = useState(false);
-  const router = useRouter();
   const userInfo = useSelector((state: any) => state.userReducer.user);
   const user = userInfo.data.user;
   useEffect(() => {
@@ -64,7 +63,11 @@ const Sidebar = (props: Props) => {
           }`}
         >
           <div className={classes.logoContainer}>
-            <h1>SimpleAI</h1>
+            <div className={classes.logoWrapper}>
+              <img src="/images/logo.png" className={classes.logo} />
+              <h2>impleAI</h2>
+            </div>
+
             <CloseOutlined className={classes.close} onClick={toggleSidebar} />
           </div>
           <Menu
@@ -140,6 +143,7 @@ const Sidebar = (props: Props) => {
               <Avatar
                 size="small"
                 src={user.profileImage}
+                style={{ marginBottom: '0.3rem' }}
                 icon={<UserOutlined />}
               />
               <span style={{ marginLeft: 8, marginRight: '0.5rem' }}>

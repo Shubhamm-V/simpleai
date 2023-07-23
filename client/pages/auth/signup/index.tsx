@@ -12,6 +12,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { loginActions } from '@/redux/reducers/userReducer';
 import URL from '@/constants/url';
 import { Helmet } from 'react-helmet';
+import { GUEST_LOGIN_DATA } from '@/components/utils/demoLogin';
 type Props = {};
 
 const SignupForm: React.FC = (props: Props) => {
@@ -98,12 +99,15 @@ const SignupForm: React.FC = (props: Props) => {
           className={classes.signupForm}
         >
           <h1 className={classes.signupHeader}>
-            Sign Up with <span>SimpleAI</span>
+            Sign Up with
+            <Link href="/">
+              <span>SimpleAI</span>
+            </Link>
           </h1>
           <Form.Item
             label="Name"
             name="name"
-            rules={[{ required: true, message: 'Pleaae enter username' }]}
+            rules={[{ required: true, message: 'Please enter name' }]}
           >
             <Input placeholder="Full Name" />
           </Form.Item>
@@ -111,7 +115,7 @@ const SignupForm: React.FC = (props: Props) => {
           <Form.Item
             label="Email"
             name="email"
-            rules={[{ required: true, message: 'Pleaae enter email' }]}
+            rules={[{ required: true, message: 'Please enter email' }]}
           >
             <Input placeholder="Email" />
           </Form.Item>
@@ -119,7 +123,7 @@ const SignupForm: React.FC = (props: Props) => {
           <Form.Item
             label="Password"
             name="password"
-            rules={[{ required: true, message: 'Please enter password!' }]}
+            rules={[{ required: true, message: 'Please enter password' }]}
           >
             <Input.Password placeholder="Password" />
           </Form.Item>
@@ -130,7 +134,7 @@ const SignupForm: React.FC = (props: Props) => {
             rules={[
               {
                 required: true,
-                message: 'Please enter confirm password password!',
+                message: 'Please enter confirm password',
               },
             ]}
           >
