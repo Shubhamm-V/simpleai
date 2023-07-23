@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './index.module.scss';
 import { Button, Col, Row } from 'antd';
 import { ArrowLeftOutlined } from '@ant-design/icons';
+import Link from 'next/link';
 type Props = {};
 
 const LearnMore = (props: Props) => {
@@ -47,10 +48,12 @@ const LearnMore = (props: Props) => {
           tool uses OpenAI's DALL-E API for image generation.
         </p>
       </Col>
-      <Button type="link" className={`link ${classes.goBack}`}>
-        <ArrowLeftOutlined />
-        Go Back
-      </Button>
+      <Link href="/">
+        <Button type="link" className={`link ${classes.goBack}`}>
+          <ArrowLeftOutlined />
+          Go Back
+        </Button>
+      </Link>
     </Row>
   );
 };

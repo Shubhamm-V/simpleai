@@ -116,7 +116,7 @@ const Login = (props: Props) => {
             name="password"
             rules={[{ required: true, message: 'Please enter your Password!' }]}
           >
-            <Input
+            <Input.Password
               prefix={<LockOutlined className="site-form-item-icon" />}
               type="password"
               placeholder="Password"
@@ -133,14 +133,13 @@ const Login = (props: Props) => {
               Log In
             </Button>
           </Form.Item>
-          <Link href="/auth/forgot-password">
-            <label
-              className={`link ${classes.forgotLink}`}
-              style={{ textAlign: 'right' }}
-            >
-              Forgot password?
-            </label>
-          </Link>
+          <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+            <Link href="/auth/forgot-password">
+              <div className={`link ${classes.forgotLink}`}>
+                Forgot password?
+              </div>
+            </Link>
+          </div>
         </Form>
         <div className={classes.loginForm}>
           <Divider className={classes.loginDivider}>OR</Divider>

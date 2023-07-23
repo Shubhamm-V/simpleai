@@ -8,7 +8,8 @@ type Props = {};
 
 const Features = (props: Props) => {
   return (
-    <div>
+    <div id="features">
+      <h1 className={classes.featureHead}> Our Testimonials</h1>
       <Row className={classes.featureContainer}>
         {FEATURES.map(
           (

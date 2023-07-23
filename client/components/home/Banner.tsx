@@ -2,6 +2,7 @@ import React from 'react';
 import classes from './index.module.scss';
 import { Row, Col, Button } from 'antd';
 import HomeBackground from './HomeBackground';
+import Link from 'next/link';
 
 const Banner = () => {
   return (
@@ -26,22 +27,26 @@ const Banner = () => {
               <Input size="large" placeholder="Enter Your Email Address" />
             </Col> */}
               <Col span={11} sm={16} xs={24}>
-                <Button
-                  size="large"
-                  type="primary"
-                  className={classes.featureButton}
-                >
-                  Explore Tools
-                </Button>
+                <a href="#features">
+                  <Button
+                    size="large"
+                    type="primary"
+                    className={classes.featureButton}
+                  >
+                    Explore Tools
+                  </Button>
+                </a>
               </Col>
               <Col span={11} sm={16} xs={24}>
-                <Button
-                  size="large"
-                  type="primary"
-                  className={classes.learnMoreButton}
-                >
-                  Learn More
-                </Button>
+                <Link href="/learn-more">
+                  <Button
+                    size="large"
+                    type="primary"
+                    className={classes.learnMoreButton}
+                  >
+                    Learn More
+                  </Button>
+                </Link>
               </Col>
             </div>
           </Col>

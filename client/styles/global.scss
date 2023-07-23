@@ -30,6 +30,10 @@ code {
     'Courier New', monospace;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .link {
   color: var(--primary-color);
   padding-inline: 0.5rem;

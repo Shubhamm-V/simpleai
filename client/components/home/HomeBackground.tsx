@@ -69,7 +69,7 @@ const HomeBackground = () => {
               value: ['#f1f1f1', '#52b395'],
             },
             number: {
-              value: windowWidth <= 930 ? 125 : 75,
+              value: windowWidth <= 930 ? 175 : 75,
               density: {
                 enable: true,
                 value_area: 1500,
