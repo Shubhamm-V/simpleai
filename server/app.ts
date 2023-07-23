@@ -11,13 +11,14 @@ const errorController = require('./controllers/errorController');
 const cors = require('./utils/accessCors');
 
 const app = express();
+
 /* Security Measures */
 
 // To add security headers
 app.use(helmet());
 
 // To parse json data
-app.use(express.json({ limit: '10kb' }));
+app.use(express.json({ limit: '5mb' }));
 
 // To prevent from query injection
 app.use(mongoSanitize());
