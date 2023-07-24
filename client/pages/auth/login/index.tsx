@@ -195,7 +195,13 @@ const Login = (props: Props) => {
           </p>
         </div>
         {isLoading && (
-          <p style={{ color: '#f1f1f1' }}>
+          <p
+            style={{
+              color: '#f1f1f1',
+              textAlign: 'center',
+              paddingInline: '1rem ',
+            }}
+          >
             Login may take upto 1 min as I using free hosting service
           </p>
         )}
