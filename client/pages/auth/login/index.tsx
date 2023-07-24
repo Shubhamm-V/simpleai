@@ -196,7 +196,7 @@ const Login = (props: Props) => {
         </div>
         {isLoading && (
           <p style={{ color: '#f1f1f1' }}>
-            Login my take upto 1 min as I using free hosting service
+            Login may take upto 1 min as I using free hosting service
           </p>
         )}
       </Col>
