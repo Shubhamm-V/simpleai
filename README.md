@@ -2,7 +2,7 @@
 
 SimpleAI provides solutions to various real life problems with the help of artificial intelligence. It contains various AI tools which makes life of people much easier and allow them to access and use youtube, google and social media with much flexibelity. It's completely free and you can Login as Guest, if you don't want to signup.
 
-AI tools in SimpleAI are: 
+SimpleAI includes AI tools like: 
 <br/>
 
 <h3> AI Video Translation </h3>
